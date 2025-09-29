@@ -59,3 +59,7 @@
 .main__menu ul.dropdown li{
   border-bottom: 0px;
 }
+
+.social__icon li a i{
+  color: #008b2d;
+}
