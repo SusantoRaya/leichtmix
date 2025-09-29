@@ -1,0 +1,53 @@
+# Yii2 runtime and assets
+/backend/runtime/*
+/backend/web/assets/*
+/frontend/runtime/*
+/frontend/web/assets/*
+/console/runtime/*
+/console/web/assets/*
+/common/runtime/*
+/common/web/assets/*
+
+# User uploads (keep dir, ignore contents)
+!/frontend/web/uploads/
+!/backend/web/uploads/
+!/common/web/uploads/
+frontend/web/uploads/*
+backend/web/uploads/*
+common/web/uploads/*
+/uploads
+# Composer vendor
+/vendor/
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Environment configs
+/.env
+/.env.local
+/.env.*.local
+
+# Local configs (keep dist/example in git)
+/common/config/main-local.php
+/common/config/params-local.php
+/backend/config/main-local.php
+/backend/config/params-local.php
+/frontend/config/main-local.php
+/frontend/config/params-local.php
+/console/config/main-local.php
+/console/config/params-local.php
+
+# PHPStorm / VSCode / IDE
+/.idea/
+/.vscode/
+/nbproject/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Composer lock file (optional, if you want consistent deps then track it)
+/composer.lock
