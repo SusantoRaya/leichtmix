@@ -1,4 +1,3 @@
-
 <?php
 Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/uploads'); // filesystem base
 Yii::setAlias('@bannerPath', Yii::getAlias('@uploads') . '/banner'); // physical path to banner images
