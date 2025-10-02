@@ -4,102 +4,94 @@ use yii\helpers\Html;
 
 $this->registerJs(
     <<<'JS'
-    $( document ).ready(function() {
-        const headerEl = document.querySelector("#product-header h2");
-        const items = document.querySelectorAll(".list-group-item");
-        const products = document.querySelectorAll(".product-item");
-    
-        items.forEach(item => {
-            item.addEventListener("click", function () {
-                // Reset active
-                items.forEach(li => li.classList.remove("active"));
-                this.classList.add("active");
+$(document).ready(function () {
+    const headerEl = document.querySelector("#product-header h2");
+    const items = document.querySelectorAll(".list-group-item");
+    const products = document.querySelectorAll(".product-item");
+    const subcats = document.querySelectorAll(".subcat-item");
 
-                const filterValue = this.dataset.filter;
-                const groupValue = this.dataset.group;
-                const parentgroupValue = this.dataset.parentgroup;
-                const products = document.querySelectorAll(".product-item");
+    // ✅ Helper: toggle show/hide
+    function showElement(el) {
+        el.classList.remove("d-none");
+        el.classList.add("d-block");
+    }
+    function hideElement(el) {
+        el.classList.remove("d-block");
+        el.classList.add("d-none");
+    }
 
-                products.forEach(p => {
-                    if (filterValue === "all") {
-                        // Show only products in the same group
-                        p.style.display = (p.dataset.group === groupValue) ? "block" : "none";
-                    } else  if (filterValue === "all-category") {
+    // ✅ Helper: apply filter
+    function applyFilter(filterValue, groupValue, parentgroupValue, title) {
+        // Hide all subcats first
+        subcats.forEach(hideElement);
 
-                        // Show only products in the same group
-                        if(parentgroupValue !== null)
-                            p.style.display = (p.dataset.parentgroup === parentgroupValue) ? "block" : "none";
+        products.forEach(p => {
+            let show = false;
 
-                    }else if (filterValue.startsWith("category-")) {
-                        // ✅ Show all products that belong to this child category
-                        p.style.display = (p.dataset.group === groupValue) ? "block" : "none";
-                    }
-                    else {
-                        // Show only matching filter
-                        p.style.display = (p.dataset.filter === filterValue) ? "block" : "none";
-                    }
-                });
-
-                // Update header if "all"
-                if (this.dataset.title) {
-                    headerEl.textContent = this.dataset.title;
+            if (filterValue === "all") {
+                show = (p.dataset.group === groupValue);
+            } else if (filterValue === "all-category") {
+                if (parentgroupValue && p.dataset.parentgroup === parentgroupValue) {
+                    // show related subcats
+                    document.querySelectorAll(`.subcat-item[data-parentgroup='${parentgroupValue}']`).forEach(showElement);
                 }
-            
-            });
+            } else if (filterValue.startsWith("category-")) {
+                show = (p.dataset.group === groupValue);
+            } else {
+                show = (p.dataset.filter === filterValue);
+            }
+
+            if (show) showElement(p);
+            else hideElement(p);
         });
 
+        // Update header
+        if (title) headerEl.textContent = title;
+    }
 
-        // ✅ Deep link handling
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const categoryParam = urlParams.get("category"); // e.g. control-panel OR product-5
+    // ✅ Attach event listeners
+    items.forEach(item => {
+        item.addEventListener("click", function () {
+            items.forEach(li => li.classList.remove("active"));
+            this.classList.add("active");
 
-        const pathParts = window.location.pathname.split("/").filter(Boolean);
-        // example: /product/control-panel → ["product","control-panel"]
-        const categoryParam = pathParts.length > 1 ? pathParts[pathParts.length - 1] : null;
-
-        if (categoryParam) {
-            // First try product filter
-            // let target = document.querySelector(`.list-group-item[data-group='${categoryParam}']`);
-            // alert(target);
-            
-            // if (!target) {
-                // If not product, try group "All" under category
-                let target = document.querySelector(`.list-group-item[data-filter='all'][data-group='${categoryParam}']`);
-                // alert(target);
-                let target2 = document.querySelector(`.list-group-item[data-filter='all-category'][data-parentgroup='${categoryParam}']`);
-            // }
-
-            if (target) {
-                // Open accordion
-                const collapseEl = target.closest(".accordion-collapse");
-                if (collapseEl && !collapseEl.classList.contains("show")) {
-                    const bsCollapse = new bootstrap.Collapse(collapseEl, { toggle: true });
-                }
-                // Trigger click to apply filter
-                target.click();
-            }
-
-            if (target2) {
-                // Open accordion
-                const collapseEl = target2.closest(".accordion-collapse");
-                if (collapseEl && !collapseEl.classList.contains("show")) {
-                    const bsCollapse = new bootstrap.Collapse(collapseEl, { toggle: true });
-                }
-                // Trigger click to apply filter
-                target2.click();
-            }
-
-            
-        } else {
-            // Default: auto open first "All"
-            const firstAll = document.querySelector(".list-group-item[data-filter='all']");
-            if (firstAll) {
-                firstAll.click();
-            }
-        }
-
-
+            const { filter, group, parentgroup, title } = this.dataset;
+            applyFilter(filter, group, parentgroup, title);
+        });
     });
+
+    // ✅ Deep link handler
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const categoryParam = pathParts.length > 1 ? pathParts[pathParts.length - 1] : null;
+
+    function openAndClick(target) {
+        if (!target) return false;
+        const collapseEl = target.closest(".accordion-collapse");
+        if (collapseEl && !collapseEl.classList.contains("show")) {
+            new bootstrap.Collapse(collapseEl, { toggle: true });
+        }
+        target.click();
+        return true;
+    }
+
+    if (categoryParam) {
+        const target =
+            document.querySelector(`.list-group-item[data-filter='all'][data-group='${categoryParam}']`) ||
+            document.querySelector(`.list-group-item[data-filter='all-category'][data-parentgroup='${categoryParam}']`) ||
+            document.querySelector(`.list-group-item[data-group='${categoryParam}']`);
+
+        if (!openAndClick(target)) {
+            // fallback → open first all
+            const firstAll = document.querySelector(".list-group-item[data-filter='all']");
+            if (firstAll) firstAll.click();
+        }
+    } else {
+        // Default open first all
+        const firstAll = document.querySelector(".list-group-item[data-filter='all']");
+        if (firstAll) firstAll.click();
+    }
+});
+
 JS
 );
 
@@ -130,6 +122,7 @@ $this->registerCss(
     /* Make li clickable */
     .list-group-item {
         cursor: pointer;
+        padding-left: 40px;
     }
 
     .list-group-item:hover {
@@ -166,29 +159,26 @@ CSS
 
                             <div class="accordion-item">
 
-                                <?php if (empty($category->parent)): ?>
-                                    <!-- If category has parent, list them -->
-                                    <h2 class="accordion-header" id="<?= 'headingCategory-' . $i ?>">
-                                        <!-- <a href="<?= yii\helpers\Url::to(['product/index', 'category_slug' => $category->slug]) ?>"> -->
+
+                                <h2 class="accordion-header" id="<?= 'headingCategory-' . $i ?>">
+                                    <a href="<?= yii\helpers\Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="<?= '#collapseCategory-' . $i ?>" aria-expanded="false" aria-controls="<?= 'collapseCategory-' . $i ?>">
                                             <?= $category_name ?>
                                         </button>
-                                        <!-- </a> -->
-                                    </h2>
-                                <?php endif; ?>
+                                    </a>
+                                </h2>
+
                                 <div id="<?= 'collapseCategory-' . $i ?>" class="accordion-collapse collapse " aria-labelledby="<?= 'headingCategory-' . $i ?>">
                                     <div class="accordion-body p-0">
                                         <ul class="list-group list-group-flush">
 
-
-                                            <?php if (!empty($children)): ?>
-
+                                            <?php if ($category->children): ?>
+                                                <!-- Level 2: Subcategories -->
                                                 <li class="list-group-item"
                                                     data-filter="all-category"
                                                     data-parentgroup="<?= $category_slug ?>"
                                                     data-title="<?= $category_name ?>">All</li>
 
-                                                <!-- If category has children, list them -->
                                                 <?php foreach ($children as $child): ?>
                                                     <li class="list-group-item filter-option"
                                                         data-filter="category-<?= $child->id ?>"
@@ -199,7 +189,7 @@ CSS
                                                     </li>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-
+                                                <!-- Level 2: Products -->
                                                 <li class="list-group-item"
                                                     data-filter="all"
                                                     data-group="<?= $category_slug ?>"
@@ -214,6 +204,11 @@ CSS
                                                         <?= Html::encode($product_name) ?>
                                                     </li>
                                                 <?php endforeach; ?>
+                                                <?php if (empty($category->products)): ?>
+                                                    <li class="list-group-item text-muted">
+                                                        No products available
+                                                    </li>
+                                                <?php endif; ?>
                                             <?php endif; ?>
 
                                         </ul>
@@ -227,21 +222,60 @@ CSS
                 </div>
             </div>
             <div class="col-md-12 col-lg-9 order-lg-2 order-1 col-sm-12 col-xs-12 smt-30">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div id="product-header" class="mb-4">
-                            <h2></h2>
-                        </div>
-                        <div class="producy__view__container">
 
-                        </div>
-                    </div>
-                </div>
                 <div class="tab-contet shop__grid__view__wrap">
+                    <div id="product-header" class="mb-4">
+                        <h2></h2>
+                    </div>
                     <!-- Start Single View -->
                     <div role="tabpanel" id="grid-view" class="row single-grid-view tab-pane  active clearfix">
 
                         <?php foreach ($categories as $i => $category): ?>
+
+                            <?php if ($category->children): ?>
+                                <?php foreach ($category->children as $child): ?>
+                                    <!-- Level 2: Subcategories -->
+                                    <div class="col-md-4 col-lg-4 col-sm-12 subcat-item mb-5" data-filter="<?= 'category-' . $child->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $category->slug ?>">
+                                        <div class="product">
+                                            <div class="product__inner">
+                                                <div class="pro__thumb">
+                                                    <a href="<?= Yii::$app->urlManager->createUrl(['product/index', 'category_slug' => $child->slug]) ?>">
+                                                        <img src="<?= $child->getImageUrl() ?>" alt="<?= $child->slug ?>">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product__details text-center">
+                                                <h2><a href="<?= Yii::$app->urlManager->createUrl(['product/index', 'category_slug' => $child->slug]) ?>"><?= $child->name; ?></a></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php foreach ($child->products as $product): ?>
+                                        <!-- Start Single Product -->
+                                        <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $child->parent ? $child->parent->slug : "" ?>">
+                                            <div class="product">
+                                                <div class="product__inner">
+                                                    <div class="pro__thumb">
+                                                        <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>">
+                                                            <img src="<?= $product->getImageUrl() ?>" alt="<?= $product->slug ?>">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__details text-center">
+                                                    <h2><a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>"><?= $product->name; ?></a></h2>
+                                                    <div class="d-flex justify-content-center gap-2 mt-3">
+                                                        <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>" class="btn btn-outline-danger px-4">Pelajari Selengkapnya</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Product -->
+                                    <?php endforeach; ?>
+
+
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
                             <?php foreach ($category->products as $product): ?>
                                 <!-- Start Single Product -->
                                 <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category->slug ?>" data-parentgroup="<?= $category->parent ? $category->parent->slug : "" ?>">
@@ -249,7 +283,7 @@ CSS
                                         <div class="product__inner">
                                             <div class="pro__thumb">
                                                 <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>">
-                                                    <img src="<?= Yii::getAlias('@web') ?>/images/product/1.png" alt="product images">
+                                                    <img src="<?= $product->getImageUrl() ?>" alt="<?= $product->slug ?>">
                                                 </a>
                                             </div>
                                         </div>

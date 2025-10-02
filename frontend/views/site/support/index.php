@@ -69,6 +69,28 @@ $this->registerJs(
         videoFrame.src = '';
     });
 
+
+    document.querySelectorAll(".custom-btn").forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault(); // prevent link navigation
+           // Reset all buttons
+            document.querySelectorAll(".custom-btn").forEach(b => {
+            b.classList.remove("active");
+            const icon = b.querySelector("i");
+            const text = b.querySelector("span");
+            if (icon) icon.classList.remove("text-danger");
+            if (text) text.classList.remove("text-danger");
+            });
+
+            // Activate the clicked button
+            this.classList.add("active");
+            const icon = this.querySelector("i");
+            const text = this.querySelector("span");
+            if (icon) icon.classList.add("text-danger");
+            if (text) text.classList.add("text-danger");
+        });
+    });
+
 JS
 );
 
@@ -102,6 +124,22 @@ $this->registerCss(
         transform: rotate(90deg);
     }
 
+    .custom-btn {
+  border-radius: 50px;         /* pill shape */
+  background-color: #fff;      /* white background */
+  border: 1px solid #ddd;      /* light gray border */
+  padding: 8px 16px;           /* spacing */
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
+.custom-btn:hover {
+  background-color: #f8f9fa;   /* light gray hover */
+  border-color: #ccc;
+}
+
+
 CSS
 );
 
@@ -134,31 +172,26 @@ CSS
     <!-- Tabs -->
     <ul class="nav nav-pills justify-content-center mb-4 tab-buttons" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="faq-tab" data-bs-toggle="pill" data-type="faq">
-                FAQ
+            <button class="custom-btn" id="faq-tab" data-bs-toggle="pill" data-type="faq">
+                <i class="fa-regular fa-circle-question me-2"></i>
+                <span class="fw-bold">FAQ</span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="panduan-tab" data-bs-toggle="pill" data-type="guide">
-                User Guide
+            <button class="custom-btn" id="panduan-tab" data-bs-toggle="pill" data-type="guide">
+                <i class="fa-solid fa-book me-2"></i>
+                <span class="fw-bold">Panduan Pengguna</span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="video-tab" data-bs-toggle="pill" data-type="video">
-                Video Instalasi
+            <button class="custom-btn" id="video-tab" data-bs-toggle="pill" data-type="video">
+                <i class="fa-regular fa-circle-play me-2"></i>
+                <span class="fw-bold">Video Instalasi</span>
             </button>
         </li>
     </ul>
 
     <div class="row">
-
-
-        <!-- <div class="tab-buttons">
-            <button data-type="faq">FAQ</button>
-            <button data-type="guide">Guide</button>
-            <button data-type="video">Video</button>
-        </div> -->
-
 
         <!-- Left Category List -->
         <div class="col-md-3">
@@ -186,7 +219,7 @@ CSS
                 <?php foreach ($categories as $i => $category): ?>
 
                     <div class="tab-pane fade <?= $i === 0 ? 'show active' : '' ?>" id="<?= 'cat-' . $category->id ?>" role="tabpanel">
-                        <h4><?= Html::encode($category->name) ?></h4>
+                        <h2 class="mb-3"><?= Html::encode($category->name) ?></h2>
                         <div class="faq-block">
                             <?= $this->render('_faq2', ['faqs' => $category->faqs]) ?>
                         </div>
