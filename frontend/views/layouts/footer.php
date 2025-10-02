@@ -1,12 +1,29 @@
+<?php
+
+use frontend\components\MenuHelper;
+use yii\helpers\Html;
+?>
 <footer class="htc__foooter__area bg__theme footer--6">
     <div class="mt-3">
 
         <div style="background-color: #ecedec;">
             <ul class="social__icon ptb--20">
+                <?php $links = MenuHelper::getSosmed(); ?>
 
-                <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="fa-brands fa-instagram"></i></i></a></li>
-                <li><a href="https://www.facebook.com/devitems/" target="_blank"><i class="fa-brands fa-facebook-f"></i></i></a></li>
-                <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+                <?php foreach ($links as $link): ?>
+
+                    <li>
+                        <a href="<?= $link->url ?>" target="_blank">
+                            <?php if ($link->icon): ?>
+                                <i class="<?= $link->icon ?>"></i>
+                            <?php else: ?>
+                                <?= Html::encode($link->name) ?>
+                            <?php endif; ?>
+                        </a>
+                    </li>
+
+                <?php endforeach; ?>
+
             </ul>
         </div>
         <!-- Start Copyright Area -->

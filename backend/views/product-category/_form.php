@@ -23,10 +23,21 @@ use common\models\ProductCategory;
         ['prompt' => 'No Parent']   // default empty option
     ) ?>
 
+    <?= $form->field($model, 'sort')->textInput(['type' => 'number']) ?>
+
     <?= $form->field($model, 'status')->dropDownList([
         1 => 'Active',
         0 => 'Inactive',
     ]) ?>
+
+        <?= $form->field($model, 'imageFile')->fileInput() ?>
+
+    <?php if ($model->image): ?>
+        <div class="m-5">
+            <img src="<?= $model->getImageUrl() ?>" style="max-width:150px;">
+        </div>
+    <?php endif; ?>
+    
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

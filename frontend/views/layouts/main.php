@@ -13,9 +13,6 @@ use frontend\components\MenuHelper;
 use yii\helpers\Url;
 
 
-$categories = MenuHelper::getCategories();
-$chunks = array_chunk($categories, 6);
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -66,7 +63,7 @@ AppAsset::register($this);
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
                                 <a href="<?= Yii::$app->urlManager->createUrl(['site/index']) ?>">
-                                    <img style="width: 50%;" src="<?= Yii::getAlias('@web') ?>/images/logo/broco.png" alt="logo">
+                                    <img style="width: 50%;" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -75,11 +72,10 @@ AppAsset::register($this);
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
                                     <li class="drop"><a href="<?= Yii::$app->urlManager->createUrl(['product/index', 'category_slug' => 'all']) ?>">Produk</a>
-                                        <ul class="dropdown mega_dropdown">
-                                            <?php foreach ($chunks as $chunk): ?>
-                                                <!-- Start Single Mega MEnu -->
+                                      <ul class="dropdown mega_dropdown">
+                                            
                                                 <ul class="mega__item">
-                                                    <?php foreach ($chunk as $category): ?>
+                                                    <?php foreach (MenuHelper::getConventionalCategories() as $category): ?>
 
                                                         <li>
                                                             <a href="<?= Url::to(['product/index','category_slug' => $category->slug]) ?>">
@@ -88,21 +84,20 @@ AppAsset::register($this);
                                                         </li>
                                                     <?php endforeach; ?>
                                                 </ul>
-                                                <!-- End Single Mega MEnu -->
-                                            <?php endforeach; ?>
 
 
-                                            <!-- Start Single Mega MEnu -->
-                                            <!-- <ul class="mega__item">
-                                                <li><a href="product-details.html">Simple Product</a></li>
-                                                <li><a href="product-details.html">Variable Product</a></li>
-                                                <li><a href="product-details.html">Grouped Product</a></li>
-                                                <li><a href="product-details.html">Downloadable Product</a></li>
-                                                <li><a href="product-details.html">Simple Product</a></li>
-                                            </ul> -->
-                                            <!-- End Single Mega MEnu -->
+                                                <ul class="mega__item">
+                                                    <?php foreach (MenuHelper::getModernCategories() as $category): ?>
+
+                                                        <li>
+                                                            <a href="<?= Url::to(['product/index','category_slug' => $category->slug]) ?>">
+                                                                <?= $category->name ?>
+                                                            </a>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+
                                         </ul>
-
                                     </li>
                                     <li><a href="<?= Yii::$app->urlManager->createUrl(['site/about-us']) ?>">Tentang Kami</a></li>
 

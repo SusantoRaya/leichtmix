@@ -2,18 +2,16 @@
 
 namespace backend\controllers;
 
-use yii;
-use common\models\ProductCategory;
-use backend\models\ProductCategorySearch;
+use common\models\AboutUs;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * ProductCategoryController implements the CRUD actions for ProductCategory model.
+ * AboutUsController implements the CRUD actions for AboutUs model.
  */
-class ProductCategoryController extends Controller
+class AboutUsController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,68 +32,56 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Lists all ProductCategory models.
+     * Lists all AboutUs models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ProductCategorySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => AboutUs::find(),
+            /*
+            'pagination' => [
+                'pageSize' => 50
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+            */
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single ProductCategory model.
+     * Displays a single AboutUs model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-
-        $model = $this->findModel($id);
-
-        $faqDataProvider = new \yii\data\ActiveDataProvider([
-            'query' => \common\models\Faq::find()->where(['product_category_id' => $model->id]),
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'sort_order' => SORT_ASC,
-                ]
-            ]
-        ]);
         return $this->render('view', [
-            'model' => $model,
-            'faqDataProvider' => $faqDataProvider,
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new ProductCategory model.
+     * Creates a new AboutUs model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new ProductCategory();
+        $model = new AboutUs();
 
         if ($this->request->isPost) {
-
-            if ($model->load($this->request->post())) {
-
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-
-                if ($model->upload() && $model->save(false)) {
-                    Yii::$app->session->setFlash('success', 'Product Category created successfully');
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -107,7 +93,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Updates an existing ProductCategory model.
+     * Updates an existing AboutUs model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -117,14 +103,8 @@ class ProductCategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post())) {
-
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-
-            if ($model->upload() && $model->save(false)) {
-                Yii::$app->session->setFlash('success', 'Product Category updated successfully');
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -133,7 +113,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Deletes an existing ProductCategory model.
+     * Deletes an existing AboutUs model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -147,15 +127,15 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Finds the ProductCategory model based on its primary key value.
+     * Finds the AboutUs model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return ProductCategory the loaded model
+     * @return AboutUs the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ProductCategory::findOne(['id' => $id])) !== null) {
+        if (($model = AboutUs::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

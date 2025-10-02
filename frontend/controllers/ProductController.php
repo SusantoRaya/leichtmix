@@ -76,14 +76,18 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::find()
             ->where(['status' => 1])
+            ->andWhere(['parent_id' => null])
             ->orderBy(['name' => SORT_ASC])
             ->with(['products' => function ($q) {
                 $q->andWhere(['status' => 1]);
             }])
+            ->orderBy(['sort' => SORT_ASC, 'name' => SORT_ASC])
             ->all();
 
+        $allCategories = ProductCategory::find()->all();
         return $this->render('/site/product/index2', [
             'categories' => $categories,
+            'allCategories' => $allCategories,
         ]);
     }
 

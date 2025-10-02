@@ -38,6 +38,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'parent_id',
             'status',
             [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->image
+                        ? Html::img($model->getImageUrl(), ['style' => 'max-width:200px;'])
+                        : '(no image)';
+                },
+            ],
+            [
                 'attribute' => 'created_at',
                 'format' => ['datetime'],
             ],

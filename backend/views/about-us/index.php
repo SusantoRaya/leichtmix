@@ -1,50 +1,43 @@
 <?php
 
-use common\models\Faq;
+use common\models\AboutUs;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+
 /** @var yii\web\View $this */
-/** @var backend\models\FaqSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Faqs';
+$this->title = 'About uses';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="faq-index">
+<div class="about-us-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Faq', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create About Us', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' => 'product_category_id',
-                'value' => function ($model) {
-                    return $model->category->name ?? '-';
-                },
-                'label' => 'Category'
-            ],
-            'question',
-            'answer:ntext',
+
+            'id',
+            'title',
+            'content:ntext',
+            'image',
             'status',
-            //'sort_order',
+            //'created_at',
+            //'updated_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Faq $model, $key, $index, $column) {
+                'urlCreator' => function ($action, AboutUs $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
         'pager' => [
@@ -55,6 +48,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
 
 </div>

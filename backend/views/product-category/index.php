@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap5\LinkPager;
 
 /** @var yii\web\View $this */
 /** @var backend\models\ProductCategorySearch $searchModel */
@@ -34,7 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'slug',
+            [
+                'attribute' => 'slug',
+                'filter' => false,
+            ],
             [
                 'attribute' => 'parent_id',
                 'value' => function ($model) {
@@ -70,6 +74,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
+
+        'pager' => [
+            'class' => \yii\bootstrap5\LinkPager::class,
+            'options' => ['class' => 'pagination justify-content-center'], // center the pagination
+            'linkContainerOptions' => ['class' => 'page-item'],
+            'linkOptions' => ['class' => 'page-link'],
+        ],
+
     ]); ?>
 
     <?php Pjax::end(); ?>

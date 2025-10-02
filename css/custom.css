@@ -60,6 +60,17 @@
   border-bottom: 0px;
 }
 
-.social__icon li a i{
-  color: #008b2d;
+.header--3 .logo{
+  height: 90px;
+}
+
+.header--3 .main__menu > li > a{
+  line-height: 90px;
+}
+
+.main__menu li.drop ul.dropdown.mega_dropdown{
+  width: 600px;
+}
+.main__menu li.drop ul.dropdown.mega_dropdown .mega__item{
+  width: 50%;
 }

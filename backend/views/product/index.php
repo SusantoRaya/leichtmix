@@ -57,6 +57,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
+        'pager' => [
+            'class' => \yii\bootstrap5\LinkPager::class,
+            'options' => ['class' => 'pagination justify-content-center'], // center the pagination
+            'linkContainerOptions' => ['class' => 'page-item'],
+            'linkOptions' => ['class' => 'page-link'],
+        ],
     ]); ?>
 
     <?php Pjax::end(); ?>

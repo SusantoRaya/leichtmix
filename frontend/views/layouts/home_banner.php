@@ -1,5 +1,5 @@
 <div class="slider__container slider--four slider__new">
-    <div class="slider__activation__02 owl-carousel owl-theme">
+    <div class="slider__activation__02 slider__activation__wrap owl-carousel owl-theme">
         <?php $banners = Yii::$app->banner->getHomeBanners(); ?>
         <?php foreach ($banners as $index => $banner): ?>
             <!-- Start Single Slide -->

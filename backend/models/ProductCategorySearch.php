@@ -66,8 +66,7 @@ class ProductCategorySearch extends ProductCategory
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'slug', $this->slug]);
+        $query->andFilterWhere(['like', 'name', "%{$this->name}%", false]);
 
         return $dataProvider;
     }

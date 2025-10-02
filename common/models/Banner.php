@@ -12,6 +12,10 @@ class Banner extends \yii\db\ActiveRecord
     const PAGES = [
         'home' => 'Home',
         'aboutus' => 'Aboutus',
+        'certificate' => 'Certificate',
+        'support_faq' => 'Support FAQ',
+        'support_guide' => 'Support Guide',
+        'support_video' => 'Support Video',
         'homecat1' => 'Home Category 1',
         'homecat2' => 'Home Category 2',
         'homecat3' => 'Home Category 3',

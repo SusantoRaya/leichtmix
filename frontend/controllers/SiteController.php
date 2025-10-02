@@ -18,7 +18,7 @@ use frontend\models\ContactForm;
 use common\models\Banner;
 use common\models\ProductCategory;
 use common\models\Shop;
-
+use common\models\Certificate;
 
 /**
  * Site controller
@@ -85,12 +85,19 @@ class SiteController extends Controller
             ->all();
         // $this->view->params['banners'] = $banners;
 
-        return $this->render('index',['shops' => $shops]);
+        return $this->render('index', ['shops' => $shops]);
     }
 
     public function actionAboutUs()
     {
-        return $this->render('about');
+        $about = \common\models\AboutUs::find()
+            ->where(['status' => 1])
+            ->orderBy(['id' => SORT_DESC])
+            ->one();
+
+        return $this->render('about', [
+            'about' => $about,
+        ]);
     }
 
     public function actionProduct()
@@ -111,7 +118,8 @@ class SiteController extends Controller
 
     public function actionCertificate()
     {
-        return $this->render('certificate');
+        $certificates = Certificate::find()->where(['status' => 1])->orderBy(['created_at' => SORT_DESC])->all();
+        return $this->render('certificate', ['certificates' => $certificates]);
     }
 
     public function actionSupport()

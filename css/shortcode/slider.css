@@ -275,8 +275,8 @@
 
 .slider__activation__wrap.owl-carousel .owl-nav div {
   background: transparent none repeat scroll 0 0;
-  height: 50px;
-  left: -50px;
+  height: auto;
+  left: 0px;
   line-height: 41px;
   position: absolute;
   top: 50%;
@@ -285,16 +285,16 @@
 }
 .slider__activation__wrap.owl-carousel .owl-nav div.owl-next {
   left: auto;
-  right: -50px;
+  right: 0px;
   transition: 0.5s;
 }
-.slider__activation__wrap:hover .owl-nav div{
+/* .slider__activation__wrap:hover .owl-nav div{
   left: 100px;
 }
 
 .slider__activation__wrap:hover .owl-nav div.owl-next{
   right: 100px;
-}
+} */
 
 
 .slider__activation__wrap.owl-carousel .owl-nav div i {

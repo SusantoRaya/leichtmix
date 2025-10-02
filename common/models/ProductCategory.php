@@ -25,6 +25,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class ProductCategory extends ActiveRecord
 {
+
+    public $imageFile;
+
     public static function tableName()
     {
         return 'product_category';
@@ -37,11 +40,14 @@ class ProductCategory extends ActiveRecord
             [['parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 255],
             [['slug'], 'unique'],
+            [['image'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
         ];
     }
 
     public function behaviors()
     {
+
         return [
             [
                 'class' => SluggableBehavior::class,
@@ -49,7 +55,7 @@ class ProductCategory extends ActiveRecord
                 'slugAttribute' => 'slug', // target column
                 'ensureUnique' => true,   // make sure slug is unique
             ],
-             TimestampBehavior::class,
+            TimestampBehavior::class,
         ];
     }
 
@@ -66,6 +72,29 @@ class ProductCategory extends ActiveRecord
         ];
     }
 
+    public function upload()
+    {
+        if ($this->validate()) {
+            if ($this->imageFile) {
+                $fileName = uniqid() . '.' . $this->imageFile->extension;
+                $uploadPath = Yii::getAlias('@uploads/category/');
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true);
+                }
+                $this->imageFile->saveAs($uploadPath . $fileName);
+                $this->image = $fileName;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function getImageUrl()
+    {
+        return $this->image
+            ? Yii::$app->params['frontendHostInfo'] . '/uploads/category/' . $this->image
+            : Yii::$app->params['frontendHostInfo'] . '/uploads/category/no-image.png';
+    }
     // 🔹 Relations
     public function getProducts()
     {

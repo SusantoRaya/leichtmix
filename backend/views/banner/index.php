@@ -55,5 +55,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{update} {delete}', // only update & delete
             ],
         ],
+        'pager' => [
+            'class' => \yii\bootstrap5\LinkPager::class,
+            'options' => ['class' => 'pagination justify-content-center'], // center the pagination
+            'linkContainerOptions' => ['class' => 'page-item'],
+            'linkOptions' => ['class' => 'page-link'],
+        ],
     ]); ?>
 </div>
