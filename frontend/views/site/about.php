@@ -19,13 +19,20 @@
              <div class="col-md-12">
                  <div class="section__title section__title--2 text-center">
                      <h1 class="title__line">TENTANG KAMI</h1>
+                     <hr style="border: 1px solid #000;">
                  </div>
              </div>
          </div>
 
          <div class="py-5">
+
              <div class="row">
-                 <div class="content col-md-12">
+                 <div class="content col-md-4 mb-3">
+                     <img width="100%" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png"
+                         alt="logo"
+                         class="img-responsive">
+                 </div>
+                 <div class="content col-md-8">
                      <?= $about->content ?? '' ?> <!-- show formatted HTML -->
                  </div>
              </div>
