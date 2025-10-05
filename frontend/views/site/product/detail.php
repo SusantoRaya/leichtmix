@@ -42,44 +42,9 @@ $this->registerCss(
                 </p>
 
                 <p class="mb-4 text-justify">
-                    <?= nl2br(Html::encode($model->description)) ?>
+                    <?= $model->description ?? '' ?>
                 </p>
 
-
-
-                <!-- Guide buttons -->
-                <?php if ($model->guide_file): ?>
-                    <div class="mb-3">
-                        <a href="<?= $model->getGuideUrl() ?>"
-                            target="_blank"
-                            class="btn btn-outline-primary me-2">
-                            👀 Preview Guide
-                        </a>
-                        <a href="<?= $model->getGuideUrl() ?>"
-                            download
-                            class="btn btn-success">
-                            ⬇️ Download Guide
-                        </a>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Video button -->
-                <?php if ($model->video_url): ?>
-                    <?php
-                    // Extract YouTube ID
-                    preg_match('/(?:v=|\/)([0-9A-Za-z_-]{11})/', $model->video_url, $matches);
-                    $videoId = $matches[1] ?? null;
-                    $embedUrl = $videoId ? "https://www.youtube.com/embed/{$videoId}?autoplay=1" : null;
-                    ?>
-                    <?php if ($embedUrl): ?>
-                        <button class="btn btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#videoModal"
-                            data-video="<?= $embedUrl ?>">
-                            🎥 Lihat Video
-                        </button>
-                    <?php endif; ?>
-                <?php endif; ?>
             </div>
         </div>
 
@@ -111,7 +76,10 @@ $this->registerCss(
 
     </div>
 
+
     <div class="container related-products-section my-5">
+        <hr style="border: 1px solid #000;">
+
         <!-- Section Title -->
         <div class="row mb-5">
             <div class="col-12">
@@ -125,8 +93,8 @@ $this->registerCss(
         <?php if ($relatedProducts): ?>
             <div class="related-products mt-10">
                 <div class="row">
-                    <?php foreach ($relatedProducts as $product): ?>
-                        <div class="col-md-6 mb-4">
+                    <?php foreach ($relatedProducts as $index => $product): ?>
+                        <div class="col-md-6 mb-4 <?= $index % 2 == 0 ? 'border-end' : '' ?>">
                             <div class="row align-items-start pt-5">
                                 <!-- Left: Image -->
                                 <div class="col-md-4 text-center mb-4 mb-md-0">
@@ -150,7 +118,7 @@ $this->registerCss(
                                     </p>
 
                                     <p class="mb-4 text-justify">
-                                        <?= nl2br(Html::encode($product->description)) ?>
+                                        <?= mb_strimwidth($product->description ?? '', 0, 300, '...'); ?>
                                     </p>
 
                                 </div>

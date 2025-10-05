@@ -19,18 +19,27 @@ class MenuHelper
     public static function getConventionalCategories()
     {
         return ProductCategory::find()
-            ->where(['status' => 1])
-            ->andWhere(['parent_id' => null])
-            ->orderBy(['sort' => SORT_ASC, 'name' => SORT_ASC])
+            ->alias('c')
+            ->where(['c.status' => 1])
+            ->andWhere([
+                'IN',
+                'c.id',
+                ProductCategory::find()
+                    ->select('parent_id')
+                    ->where(['IS NOT', 'parent_id', null])
+            ])
+            ->orderBy(['c.sort' => SORT_ASC, 'c.name' => SORT_ASC])
             ->all();
     }
 
     public static function getModernCategories()
     {
         return ProductCategory::find()
-            ->where(['status' => 1])
-            ->andWhere(['IS NOT', 'parent_id', null])
-            ->orderBy(['sort' => SORT_ASC, 'name' => SORT_ASC])
+            ->alias('c')
+            ->where(['c.status' => 1])
+            ->andWhere(['c.parent_id' => null])
+            ->andWhere(['NOT IN', 'c.id', ProductCategory::find()->select('parent_id')->where(['IS NOT', 'parent_id', null])])
+            ->orderBy(['c.sort' => SORT_ASC, 'c.name' => SORT_ASC])
             ->all();
     }
 

@@ -15,6 +15,7 @@
 
     <div class="col-md-4 col-lg-4 col-sm-12 product-item" data-category="<?= 'product-' . $product->id ?>" data-group="<?= 'group-' . $category->id ?>">
         <div class=" product">
+            <?php if($product->video_url): ?>
             <div class="product__inner">
                 <div class="pro__thumb">
                     <?php if ($thumbnailUrl): ?>
@@ -25,9 +26,7 @@
                     <?php else: ?>
                         <div class="bg-dark text-white p-5 mb-2">Video Preview Not Available</div>
                     <?php endif; ?>
-                    <!-- <a href="#">
-                    <iframe src="https://www.youtube.com/embed/yourVideoID" title="Video Instalasi Broco Smart" allowfullscreen></iframe>
-                </a> -->
+                    
                 </div>
             </div>
             <div class="product__details text-center">
@@ -45,6 +44,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 

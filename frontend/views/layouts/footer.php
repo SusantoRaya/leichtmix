@@ -7,6 +7,17 @@ use yii\helpers\Html;
     <div class="mt-3">
 
         <div style="background-color: #ecedec;">
+            <div class="row justify-content-center align-items-center p-3">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="logo">
+                        <a href="<?= Yii::$app->urlManager->createUrl(['site/index']) ?>">
+                            <img width="200px" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png"
+                                alt="logo"
+                                class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
             <ul class="social__icon ptb--20">
                 <?php $links = MenuHelper::getSosmed(); ?>
 

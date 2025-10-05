@@ -13,15 +13,17 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/fontawesome/css/brands.css',
-        'css/fontawesome/css/fontawesome.css',
         'css/bootstrap.min.css',
+        'css/fontawesome/css/all.css',
+        // 'css/fontawesome/css/brands.css',
+        // 'css/fontawesome/css/regular.css',
+        'css/fontawesome/css/fontawesome.css',
         'css/plugins.css',
         'css/shortcode/shortcodes.css',
         'css/style.css',
         'css/responsive.css',
-        'css/custom.css',
-        
+        'css/custom.css'
+
     ];
     public $js = [
         'js/vendor/modernizr-3.11.2.min.js',

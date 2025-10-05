@@ -19,6 +19,8 @@ use common\models\Banner;
 use common\models\ProductCategory;
 use common\models\Shop;
 use common\models\Certificate;
+use common\models\ProjectReference;
+use frontend\components\MenuHelper;
 
 /**
  * Site controller
@@ -118,23 +120,30 @@ class SiteController extends Controller
 
     public function actionCertificate()
     {
-        $certificates = Certificate::find()->where(['status' => 1])->orderBy(['created_at' => SORT_DESC])->all();
-        return $this->render('certificate', ['certificates' => $certificates]);
+        $certificate_national = Certificate::find()->where(['status' => 1, 'level' => 1])->orderBy(['created_at' => SORT_DESC])->all();
+        $certificate_international = Certificate::find()->where(['status' => 1, 'level' => 2])->orderBy(['created_at' => SORT_DESC])->all();
+        return $this->render('certificate', ['certificate_national' => $certificate_national, 'certificate_international' => $certificate_international]);
+    }
+
+    public function actionProject()
+    {
+        $projects = ProjectReference::find()->where(['status' => 1])->orderBy(['title' => SORT_ASC])->all();
+        return $this->render('project', ['projects' => $projects]);
     }
 
     public function actionSupport()
     {
-        $categories = ProductCategory::find()
-            ->where(['status' => 1])
-            ->orderBy(['name' => SORT_ASC])
-            ->with(['products' => function ($q) {
-                $q->andWhere(['status' => 1]);
-            }])
-            ->all();
+        $categories = MenuHelper::getModernCategories();
 
         return $this->render('support/index', [
             'categories' => $categories,
         ]);
+    }
+
+
+    public function actionDownloadApps()
+    {
+        return $this->render('downloadApps');
     }
 
     /**
@@ -177,22 +186,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
+    public function actionContactUs()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
 
-            return $this->refresh();
-        }
-
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->render('contact');
     }
 
     /**
@@ -204,6 +201,7 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
 
     /**
      * Signs user up.

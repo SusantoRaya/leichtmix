@@ -8,7 +8,7 @@ return [
     'user.passwordMinLength' => 8,
 
     // 👇 important: change to your real frontend domain
-    'frontendHostInfo' => 'http://localhost/broco',
+    'frontendHostInfo' => 'http://localhost/leichtmix',
 
     'banners' => '',
 

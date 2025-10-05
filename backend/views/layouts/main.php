@@ -34,22 +34,26 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Banner', 'url' => ['/banner']],
-        ['label' => 'All Products', 'url' => ['/product/index']],
-        ['label' => 'Categories', 'url' => ['/product-category/index']],
-        ['label' => 'Shops', 'url' => ['/shop/index']],
-        ['label' => 'FAQ', 'url' => ['/faq/index']],
-        ['label' => 'Sosmed', 'url' => ['/social-media/index']],
-        ['label' => 'About us', 'url' => ['/about-us/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
+$menuItems = [
+    ['label' => '<i class="fa-solid fa-house me-2"></i> Home', 'url' => ['/site/index']],
+    ['label' => '<i class="fa-solid fa-image me-2"></i> Banner', 'url' => ['/banner']],
+    ['label' => '<i class="fa-solid fa-boxes-stacked me-2"></i> All Products', 'url' => ['/product/index']],
+    ['label' => '<i class="fa-solid fa-layer-group me-2"></i> Categories', 'url' => ['/product-category/index']],
+    ['label' => '<i class="fa-solid fa-store me-2"></i> Shops', 'url' => ['/shop/index']],
+    ['label' => '<i class="fa-regular fa-circle-question me-2"></i> FAQ', 'url' => ['/faq/index']],
+    ['label' => '<i class="fa-brands fa-facebook me-2"></i> Sosmed', 'url' => ['/social-media/index']],
+    ['label' => '<i class="fa-regular fa-address-card me-2"></i> About Us', 'url' => ['/about-us/index']],
+    ['label' => '<i class="fa-solid fa-certificate me-2"></i> Certificate', 'url' => ['/certificate/index']],
+        ['label' => '<i class="fa-solid fa-certificate me-2"></i> Project Reference', 'url' => ['/project/index']],
+];
+
+if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     }     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
+        'encodeLabels' => false,
     ]);
     if (Yii::$app->user->isGuest) {
         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);

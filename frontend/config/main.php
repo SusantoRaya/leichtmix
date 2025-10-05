@@ -50,8 +50,17 @@ return [
                 'product/<id:\d+>' => 'product/detail',
                 'product/<category_slug>/<product_slug>' => 'product/detail',
 
+                'product/<category_slug>/<subcategory_slug>' => 'product/index',
+
                 // ✅ Product category page
                 'product/<category_slug>' => 'product/index',
+
+                'tentang-kami' => 'site/about-us',
+                'sertifikasi' => 'site/certificate',
+                'proyek-referensi' => 'site/project',
+                'support' => 'site/support',
+                'download-apps' => 'site/download-apps',
+
             ],
         ],
 

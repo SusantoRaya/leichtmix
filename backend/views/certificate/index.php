@@ -24,12 +24,31 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'title',
-            'file',
-            'status',
+            [
+                'attribute' => 'level',
+                'value' => function ($model) {
+                    return $model->level == 1 ? 'National' : 'International';
+                },
+                'filter' => [1 => 'National', 2 => 'International'],
+            ],
+            [
+                'attribute' => 'file',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->file
+                        ? Html::img($model->getFileUrl(), ['width' => '100'])
+                        : null;
+                }
+            ],
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return $model->status == 1 ? 'Active' : 'Inactive';
+                },
+                'filter' => [1 => 'Active', 0 => 'Inactive'],
+            ],
             'created_at:date',
             //'updated_at',
             [

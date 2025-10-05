@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'product_category_id',
                 'value' => function ($model) {
-                    return $model->category->name ?? '-';
+                    return $model->category->name;
                 },
                 'label' => 'Category'
             ],

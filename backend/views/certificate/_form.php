@@ -10,6 +10,8 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'level')->dropDownList([1 => 'National', 2 => 'International']) ?>
+
     <?= $form->field($model, 'fileUpload')->fileInput() ?>
 
     <?php if (!$model->isNewRecord && $model->file): ?>

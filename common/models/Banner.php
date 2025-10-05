@@ -78,4 +78,6 @@ class Banner extends \yii\db\ActiveRecord
         $base = $host ? rtrim($host, '/') : '';
         return $base . '/uploads/banner/' . $this->image;
     }
+
+   
 }

@@ -159,6 +159,41 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionUploadImage()
+    {
+        $funcNum = Yii::$app->request->get('CKEditorFuncNum');
+        $url = '';
+        $message = '';
+
+        if (isset($_FILES['upload'])) {
+            $file = $_FILES['upload'];
+            $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+            $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+            if (in_array($ext, $allowed)) {
+                $filename = 'ckeditor'.uniqid() . '.' . $ext;
+                $uploadPath = Yii::getAlias('@uploads/product/');
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true);
+                }
+
+                $filePath = $uploadPath .'/'. $filename;
+                if (move_uploaded_file($file['tmp_name'], $filePath)) {
+                    $url = Yii::$app->params['frontendHostInfo'] . '/uploads/product/' . $filename;
+                } else {
+                    $message = 'Upload failed. Please try again.';
+                }
+            } else {
+                $message = 'Only JPG, PNG, GIF, or WEBP files are allowed.';
+            }
+        } else {
+            $message = 'No file uploaded.';
+        }
+
+        return "<script>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
+    }
+
+
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

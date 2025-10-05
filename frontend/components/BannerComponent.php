@@ -33,6 +33,16 @@ class BannerComponent extends Component
             ->all();
     }
 
+    public function getSupportCategories(): array
+    {
+        $pages = "support_";
+
+        return Banner::find()
+            ->andWhere(['like', 'page', "{$pages}%", false])
+            ->indexBy('page')
+            ->all();
+    }
+
     public function getHomeBanners(): array
     {
         $pages = ['home'];

@@ -63,55 +63,70 @@ AppAsset::register($this);
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
                                 <a href="<?= Yii::$app->urlManager->createUrl(['site/index']) ?>">
-                                    <img style="width: 50%;" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png" alt="logo">
+                                    <img width="200px" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png"
+                                        alt="logo"
+                                        class="img-responsive">
                                 </a>
                             </div>
                         </div>
                         <!-- Start MAinmenu Ares -->
-                        <div class="col-md-8 col-lg-8 d-none d-md-block">
+                        <div class="col-md-10 col-lg-10 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
                                     <li class="drop"><a href="<?= Yii::$app->urlManager->createUrl(['product/index', 'category_slug' => 'all']) ?>">Produk</a>
-                                      <ul class="dropdown mega_dropdown">
-                                            
-                                                <ul class="mega__item">
-                                                    <?php foreach (MenuHelper::getConventionalCategories() as $category): ?>
+                                        <ul class="dropdown mega_dropdown">
 
-                                                        <li>
-                                                            <a href="<?= Url::to(['product/index','category_slug' => $category->slug]) ?>">
-                                                                <?= $category->name ?>
-                                                            </a>
-                                                        </li>
-                                                    <?php endforeach; ?>
-                                                </ul>
+                                            <ul class="mega__item">
+                                                <?php foreach (MenuHelper::getConventionalCategories() as $category): ?>
+
+                                                    <li>
+                                                        <a href="<?= Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
+                                                            <?= $category->name ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
 
 
-                                                <ul class="mega__item">
-                                                    <?php foreach (MenuHelper::getModernCategories() as $category): ?>
+                                            <ul class="mega__item">
+                                                <?php foreach (MenuHelper::getModernCategories() as $category): ?>
 
-                                                        <li>
-                                                            <a href="<?= Url::to(['product/index','category_slug' => $category->slug]) ?>">
-                                                                <?= $category->name ?>
-                                                            </a>
-                                                        </li>
-                                                    <?php endforeach; ?>
-                                                </ul>
+                                                    <li>
+                                                        <a href="<?= Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
+                                                            <?= $category->name ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
 
                                         </ul>
                                     </li>
                                     <li><a href="<?= Yii::$app->urlManager->createUrl(['site/about-us']) ?>">Tentang Kami</a></li>
 
                                     <li class="drop">
+                                        <a href="<?= Yii::$app->urlManager->createUrl(['site/contact-us']) ?>">Hubungi Kami</a>
+                                    </li>
+                                    <li class="drop">
                                         <a href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>">Sertifikasi</a>
                                     </li>
-                                    <li class="drop"><a href="<?= Yii::$app->urlManager->createUrl(['site/support']) ?>">Support</a>
-                                        <ul class="dropdown">
-                                            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/support', 'type' => 'faq']) ?>">FAQ</a></li>
-                                            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/support', 'type' => 'guide']) ?>">Guide</a></li>
-                                            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/support', 'type' => 'video']) ?>">Video Instalasi</a></li>
-                                        </ul>
+                                    <li class="drop">
+                                        <a href="<?= Yii::$app->urlManager->createUrl(['site/project']) ?>">Referensi Proyek</a>
                                     </li>
-                                    <li><a href="contact.html">Download Apps</a></li>
+                                    <li class="drop">
+                                        <a style="line-height: 30px;" href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>" class="btn btn-outline-danger">Unduh Brosur</a>
+                                    </li>
+                                    <!-- <li class="drop"><a href="<?php //Yii::$app->urlManager->createUrl(['site/support']) 
+                                                                    ?>">Support</a>
+                                        <ul class="dropdown">
+                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'faq']) 
+                                                            ?>">FAQ</a></li>
+                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'guide']) 
+                                                            ?>">Guide</a></li>
+                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'video']) 
+                                                            ?>">Video Instalasi</a></li>
+                                        </ul>
+                                    </li> -->
+
                                 </ul>
                             </nav>
                             <div class="mobile-menu clearfix d-block d-lg-none">

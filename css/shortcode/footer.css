@@ -96,9 +96,9 @@
     width: 40px;
 }
 .social__icon li a:hover i {
-    background: #ff4136 none repeat scroll 0 0;
-    border: 1px solid #ff4136;
-    color: #fff;
+    /* background: #ff4136 none repeat scroll 0 0; */
+    /* border: 1px solid #ff4136; */
+    /* color: #fff; */
 }
 .copyright p {
     color: #ffff;

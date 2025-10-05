@@ -134,6 +134,12 @@ $this->registerCss(
         color: white;
         font-weight: bold;
     }
+
+    .accordion-item {
+        border: none;
+        border-bottom: 1px solid #ddd;   /* divider line between items */
+    }
+
 CSS
 );
 ?>
@@ -143,7 +149,7 @@ CSS
 <section class="htc__shop__sidebar bg__white ptb--120">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-3 order-lg-1 order-2 col-sm-12">
+            <div class="col-md-12 col-lg-3 order-lg-1 order-2 col-sm-12 border-end">
                 <div class="htc__shop__left__sidebar">
                     <div class="accordion" id="filterAccordion">
 
@@ -174,7 +180,7 @@ CSS
 
                                             <?php if ($category->children): ?>
                                                 <!-- Level 2: Subcategories -->
-                                                <li class="list-group-item"
+                                                <li class="list-group-item d-none"
                                                     data-filter="all-category"
                                                     data-parentgroup="<?= $category_slug ?>"
                                                     data-title="<?= $category_name ?>">All</li>
@@ -190,7 +196,7 @@ CSS
                                                 <?php endforeach; ?>
                                             <?php else: ?>
                                                 <!-- Level 2: Products -->
-                                                <li class="list-group-item"
+                                                <li class="list-group-item d-none"
                                                     data-filter="all"
                                                     data-group="<?= $category_slug ?>"
                                                     data-title="<?= $category_name ?>">All</li>
@@ -201,7 +207,7 @@ CSS
                                                         data-filter="<?= 'product-' . $product->id ?>"
                                                         data-group="<?= $category_slug ?>"
                                                         data-title="<?= $product_name ?>">
-                                                        <?= Html::encode($product_name) ?>
+                                                        <?= mb_strimwidth(Html::encode($product_name), 0, 200, '...'); ?>
                                                     </li>
                                                 <?php endforeach; ?>
                                                 <?php if (empty($category->products)): ?>
@@ -235,7 +241,7 @@ CSS
                             <?php if ($category->children): ?>
                                 <?php foreach ($category->children as $child): ?>
                                     <!-- Level 2: Subcategories -->
-                                    <div class="col-md-4 col-lg-4 col-sm-12 subcat-item mb-5" data-filter="<?= 'category-' . $child->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $category->slug ?>">
+                                    <div class="col-md-4 col-lg-4 col-sm-12 subcat-item mb-5 d-none" data-filter="<?= 'category-' . $child->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $category->slug ?>">
                                         <div class="product">
                                             <div class="product__inner">
                                                 <div class="pro__thumb">
@@ -263,9 +269,7 @@ CSS
                                                 </div>
                                                 <div class="product__details text-center">
                                                     <h2><a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>"><?= $product->name; ?></a></h2>
-                                                    <div class="d-flex justify-content-center gap-2 mt-3">
-                                                        <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>" class="btn btn-outline-danger px-4">Pelajari Selengkapnya</a>
-                                                    </div>
+                                                 
                                                 </div>
                                             </div>
                                         </div>
@@ -278,7 +282,7 @@ CSS
 
                             <?php foreach ($category->products as $product): ?>
                                 <!-- Start Single Product -->
-                                <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category->slug ?>" data-parentgroup="<?= $category->parent ? $category->parent->slug : "" ?>">
+                                <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category->slug ?>" data-parentgroup="<?= $category->parent ? $category->parent->slug : "" ?>">
                                     <div class="product">
                                         <div class="product__inner">
                                             <div class="pro__thumb">
@@ -290,7 +294,7 @@ CSS
                                         <div class="product__details text-center">
                                             <h2><a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>"><?= $product->name; ?></a></h2>
                                             <div class="d-flex justify-content-center gap-2 mt-3">
-                                                <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>" class="btn btn-outline-danger px-4">Pelajari Selengkapnya</a>
+                                                <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>" class="btn btn-outline-danger px-4">Pelajari Lebih Lanjut</a>
                                             </div>
                                         </div>
                                     </div>

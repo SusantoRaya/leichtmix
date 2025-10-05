@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\ArrayHelper;
 use common\models\Shop;
+use dosamigos\ckeditor\CKEditor;
 
 /** @var yii\web\View $this */
 /** @var common\models\Product $model */
@@ -54,7 +55,24 @@ JS
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(\dosamigos\ckeditor\CKEditor::class, [
+        'options' => ['rows' => 6],
+        'preset' => 'full', // this already includes many tools
+        'clientOptions' => [
+            'extraPlugins' => 'uploadimage,image2,colorbutton,colordialog',
+            'filebrowserUploadUrl' => Yii::$app->urlManager->createUrl(['product/upload-image']),
+            'filebrowserUploadMethod' => 'form',
+            'toolbar' => [
+                ['name' => 'clipboard', 'items' => ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']],
+                ['name' => 'editing', 'items' => ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt']],
+                ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'RemoveFormat']],
+                ['name' => 'colors', 'items' => ['TextColor', 'BGColor']], // 👈 color buttons here
+                ['name' => 'paragraph', 'items' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']],
+                ['name' => 'insert', 'items' => ['Image', 'Table', 'HorizontalRule', 'SpecialChar']],
+                ['name' => 'styles', 'items' => ['Styles', 'Format', 'Font', 'FontSize']],
+            ],
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'price')->textInput([
         'id' => 'price-input',
