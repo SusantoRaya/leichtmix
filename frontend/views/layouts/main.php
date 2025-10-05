@@ -112,20 +112,10 @@ AppAsset::register($this);
                                     <li class="drop">
                                         <a href="<?= Yii::$app->urlManager->createUrl(['site/project']) ?>">Referensi Proyek</a>
                                     </li>
-                                    <li class="drop">
-                                        <a style="line-height: 30px;" href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>" class="btn btn-outline-danger">Unduh Brosur</a>
+                                    <li class="drop brochure-btn">
+                                        <a href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>"> Unduh Brosur</a>
                                     </li>
-                                    <!-- <li class="drop"><a href="<?php //Yii::$app->urlManager->createUrl(['site/support']) 
-                                                                    ?>">Support</a>
-                                        <ul class="dropdown">
-                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'faq']) 
-                                                            ?>">FAQ</a></li>
-                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'guide']) 
-                                                            ?>">Guide</a></li>
-                                            <li><a href="<?php // Yii::$app->urlManager->createUrl(['site/support', 'type' => 'video']) 
-                                                            ?>">Video Instalasi</a></li>
-                                        </ul>
-                                    </li> -->
+
 
                                 </ul>
                             </nav>

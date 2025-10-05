@@ -136,3 +136,19 @@
 .social__icon li a i{
   color: #008b2d;
 }
+
+.brochure-btn a {
+  display: inline-block;
+  border: 2px solid #c62828;
+  color: #333;
+  font-weight: 700;
+  padding: 0px 10px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.brochure-btn a:hover {
+  background-color: #c62828;
+  color: #fff;
+}
