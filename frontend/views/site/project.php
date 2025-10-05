@@ -2,18 +2,21 @@
 // ✅ Register CSS
 $this->registerCss("
     .card img {
-        transition: transform 0.3s ease;
+        transition: box-shadow 0.3s ease;
          height: 250px;         /* set your preferred height */
         width: 100%;
         object-fit: cover;     /* crop to fit without distortion */
         border-radius: 8px;    /* optional rounded corners */
+    overflow: hidden;
+
     }
     .card:hover img {
-        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
     .card p {
         font-size: 1.1rem;
     }
+
 ");
 
 // ✅ Register JS + CSS for GLightbox
