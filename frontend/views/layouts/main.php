@@ -77,18 +77,6 @@ AppAsset::register($this);
                                         <ul class="dropdown mega_dropdown">
 
                                             <ul class="mega__item">
-                                                <?php foreach (MenuHelper::getConventionalCategories() as $category): ?>
-
-                                                    <li>
-                                                        <a href="<?= Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
-                                                            <?= $category->name ?>
-                                                        </a>
-                                                    </li>
-                                                <?php endforeach; ?>
-                                            </ul>
-
-
-                                            <ul class="mega__item">
                                                 <?php foreach (MenuHelper::getModernCategories() as $category): ?>
 
                                                     <li>
@@ -113,7 +101,7 @@ AppAsset::register($this);
                                         <a href="<?= Yii::$app->urlManager->createUrl(['site/project']) ?>">Referensi Proyek</a>
                                     </li>
                                     <li class="drop brochure-btn">
-                                        <a href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>"> Unduh Brosur</a>
+                                        <a href="<?= Yii::$app->urlManager->createUrl(['site/download-brochure']) ?>"> Unduh Brosur</a>
                                     </li>
 
 

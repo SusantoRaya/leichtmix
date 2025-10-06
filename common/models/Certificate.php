@@ -28,7 +28,7 @@ class Certificate extends ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['status'], 'integer'],
+            [['status','level'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [['file'], 'string', 'max' => 255],
             [['fileUpload'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf, jpg, jpeg, png'],

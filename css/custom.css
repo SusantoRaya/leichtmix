@@ -73,10 +73,10 @@
 }
 
 .main__menu li.drop ul.dropdown.mega_dropdown{
-  width: 600px;
+  width: 250px;
 }
 .main__menu li.drop ul.dropdown.mega_dropdown .mega__item{
-  width: 50%;
+  width: 100%;
 }
 
 .header--3 .logo {
@@ -89,13 +89,6 @@
   line-height: 50px;
 }
 
-.main__menu li.drop ul.dropdown.mega_dropdown {
-  width: 600px;
-}
-
-.main__menu li.drop ul.dropdown.mega_dropdown .mega__item {
-  width: 50%;
-}
 
 .header--3 .main__menu>li>a {
   font-size: 15px;

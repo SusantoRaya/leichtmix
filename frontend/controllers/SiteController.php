@@ -125,6 +125,16 @@ class SiteController extends Controller
         return $this->render('certificate', ['certificate_national' => $certificate_national, 'certificate_international' => $certificate_international]);
     }
 
+    public function actionDownloadBrochure()
+    {
+        $filePath = Yii::$app->params['frontendHostInfo'].'/uploads/brochure/leichtmix-brochure.pdf';
+        if (file_exists($filePath)) {
+            return Yii::$app->response->sendFile($filePath, 'leichtmix-brochure.pdf');
+        } else {
+            throw new \yii\web\NotFoundHttpException('File not found.');
+        }
+    }
+
     public function actionProject()
     {
         $projects = ProjectReference::find()->where(['status' => 1])->orderBy(['title' => SORT_ASC])->all();

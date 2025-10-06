@@ -13,7 +13,7 @@
 
 
  <!-- Start Our Store Area -->
- <section class="htc__store__area ptb--120 bg__white">
+ <section class="htc__store__area pt-5 pb-5 bg__white">
      <div class="container">
          <div class="row">
              <div class="col-md-12">

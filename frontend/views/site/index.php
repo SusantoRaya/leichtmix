@@ -43,7 +43,7 @@ use yii\helpers\Html;
                     </div>
                     <div class="content">
                         <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Selengkapnya</a>
+                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -58,7 +58,7 @@ use yii\helpers\Html;
                     </div>
                     <div class="content">
                         <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Selengkapnya</a>
+                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -76,7 +76,7 @@ use yii\helpers\Html;
                     </div>
                     <div class="content">
                         <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Selengkapnya</a>
+                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -92,7 +92,7 @@ use yii\helpers\Html;
                     </div>
                     <div class="content">
                         <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Selengkapnya</a>
+                        <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
                     </div>
                 </div>
             <?php endif; ?>
