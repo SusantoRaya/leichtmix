@@ -127,7 +127,8 @@ class SiteController extends Controller
 
     public function actionDownloadBrochure()
     {
-        $filePath = Yii::$app->params['frontendHostInfo'].'/uploads/brochure/leichtmix-brochure.pdf';
+        $filePath = Yii::getAlias('@uploads').'/brochure/leichtmix-brochure.pdf';
+
         if (file_exists($filePath)) {
             return Yii::$app->response->sendFile($filePath, 'leichtmix-brochure.pdf');
         } else {
