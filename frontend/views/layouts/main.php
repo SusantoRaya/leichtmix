@@ -63,9 +63,9 @@ AppAsset::register($this);
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
                                 <a href="<?= Yii::$app->urlManager->createUrl(['site/index']) ?>">
-                                    <img width="200px" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png"
+                                    <img src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png"
                                         alt="logo"
-                                        class="img-responsive">
+                                        class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ AppAsset::register($this);
                         <div class="col-md-10 col-lg-10 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="<?= Yii::$app->urlManager->createUrl(['product/index', 'category_slug' => 'all']) ?>">Produk</a>
+                                    <li class="drop"><a href="#">Produk</a>
                                         <ul class="dropdown mega_dropdown">
 
                                             <ul class="mega__item">
@@ -110,36 +110,33 @@ AppAsset::register($this);
                             <div class="mobile-menu clearfix d-block d-lg-none">
                                 <nav id="mobile_dropdown">
                                     <ul>
-                                        <li><a href="index.html">Home</a>
+                                        <li><a href="#">Produk</a>
                                             <ul>
-                                                <li><a href="index.html">Home 1</a></li>
-                                                <li><a href="index-2.html">Home 2</a></li>
-                                                <li><a href="index-3.html">Home 3</a></li>
-                                                <li><a href="index-4.html">Home 4</a></li>
-                                                <li><a href="index-5.html">Home 5</a></li>
-                                                <li><a href="index-6.html">Home 6</a></li>
-                                                <li><a href="index-7.html">Home 7</a></li>
-                                                <li><a href="index-8.html">Home 8</a></li>
-                                                <li><a href="index-9.html">Home 9</a></li>
-                                                <li><a href="index-10.html">Home 10</a></li>
+                                                <?php foreach (MenuHelper::getModernCategories() as $category): ?>
+                                                    <li>
+                                                        <a href="<?= Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
+                                                            <?= $category->name ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="<?= Yii::$app->urlManager->createUrl(['site/about-us']) ?>">Tentang Kami</a></li>
 
-                                        <li><a href="#">pages</a>
-                                            <ul>
-                                                <li><a href="about.html">about</a></li>
-                                                <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-sidebar.html">shop sidebar</a></li>
-                                                <li><a href="product-details.html">product details</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="team.html">team</a></li>
-                                                <li><a href="login-register.html">login & register</a></li>
-                                            </ul>
+                                        <li>
+                                            <a href="<?= Yii::$app->urlManager->createUrl(['site/contact-us']) ?>">Hubungi Kami</a>
                                         </li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li>
+                                            <a href="<?= Yii::$app->urlManager->createUrl(['site/certificate']) ?>">Sertifikasi</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= Yii::$app->urlManager->createUrl(['site/project']) ?>">Referensi Proyek</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?= Yii::$app->urlManager->createUrl(['site/download-brochure']) ?>"> <i class="fa-solid fa-download"></i>
+                                                Unduh Brosur</a>
+                                        </li>
+
                                     </ul>
                                 </nav>
                             </div>
@@ -198,7 +195,9 @@ AppAsset::register($this);
         </div>
     </div>
     <!-- Body main wrapper end -->
-
+    <a href="https://wa.me/6281908808868" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
     <?php $this->endBody() ?>
 </body>
 

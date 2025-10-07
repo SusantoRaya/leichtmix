@@ -21,12 +21,17 @@
 
 .video-container {
   height: 750px;
-  
+}
+
+@media (max-width: 767px) {
+  .video-container {
+    height: 300px;
+  }
 }
 
 .banner.style--2 .content {
-    top: 85%;
-    width: 100%;
+  top: 85%;
+  width: 100%;
 }
 
 .htc__btn.shop__now__btn {
@@ -35,7 +40,7 @@
   float: right;
 }
 
-.wrap__box__style--1{
+.wrap__box__style--1 {
   padding-bottom: 0px;
 }
 
@@ -44,40 +49,51 @@
 } */
 
 .main__menu li.drop ul.dropdown {
- background: #4b4b4b;          /* dark gray */
+  background: #4b4b4b;
+  /* dark gray */
   color: #fff;
   border: none;
   border-radius: 8px;
-  border-top: 6px solid #dc3545; /* red top stripe */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border-top: 6px solid #dc3545;
+  /* red top stripe */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-.main__menu ul.dropdown li a{
-   background: #4b4b4b;   
-   color: #fff;
+.main__menu ul.dropdown li a {
+  background: #4b4b4b;
+  color: #fff;
 }
-.main__menu ul.dropdown li{
+
+.main__menu ul.dropdown li {
   border-bottom: 0px;
 }
 
-.header--3 .logo{
-  height: 90px;
+.header--3 .logo {
+  height: 50px;
 }
 
-.header--3 .main__menu > li > a{
+.header--3 .logo img {
+  max-width: 150px;
+  /* Limit maximum width */
+  height: auto;
+  /* Keep aspect ratio */
+}
+
+.header--3 .main__menu>li>a {
   line-height: 90px;
 }
 
-.sticky__header.scroll-header .main__menu > li > a{
+.sticky__header.scroll-header .main__menu>li>a {
   height: 50px;
   line-height: 50px;
 }
 
 
-.main__menu li.drop ul.dropdown.mega_dropdown{
+.main__menu li.drop ul.dropdown.mega_dropdown {
   width: 250px;
 }
-.main__menu li.drop ul.dropdown.mega_dropdown .mega__item{
+
+.main__menu li.drop ul.dropdown.mega_dropdown .mega__item {
   width: 100%;
 }
 
@@ -128,7 +144,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.social__icon li a i{
+.social__icon li a i {
   color: #008b2d;
 }
 

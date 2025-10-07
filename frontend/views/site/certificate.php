@@ -1,6 +1,24 @@
 <?php
 
-use yii\helpers\Html; ?>
+use yii\helpers\Html;
+
+// ✅ Register JS + CSS for GLightbox
+$this->registerCssFile('https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css', [
+    'depends' => [\yii\bootstrap5\BootstrapAsset::class],
+]);
+
+$this->registerJsFile('https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [
+    'depends' => [\yii\web\JqueryAsset::class],
+]);
+
+$this->registerJs("
+    const lightbox = GLightbox({
+        touchNavigation: true,
+        loop: true
+    });
+");
+
+?>
 <?php $banner = Yii::$app->banner->getByPage('certificate'); ?>
 <?php if ($banner): ?>
     <!-- Start Bradcaump area -->
@@ -16,7 +34,7 @@ use yii\helpers\Html; ?>
 
 
 <!-- Start Our Store Area -->
-<section class="htc__store__area ptb--120 bg__white">
+<section class="htc__store__area ptb--30 bg__white">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -35,8 +53,10 @@ use yii\helpers\Html; ?>
                 <div class="row justify-content-center">
 
                     <?php foreach ($certificate_national as $cert): ?>
-                       <div class="col-md-4 mb-4">
-                            <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
+                        <div class="col-md-4 mb-4">
+                            <a href="<?= $cert->getFileUrl() ?>" class="glightbox" data-gallery="projects">
+                                <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
+                            </a>
                         </div>
 
                     <?php endforeach; ?>
@@ -50,7 +70,9 @@ use yii\helpers\Html; ?>
 
                     <?php foreach ($certificate_international as $cert): ?>
                         <div class="col-md-4 mb-4">
-                            <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
+                            <a href="<?= $cert->getFileUrl() ?>" class="glightbox" data-gallery="projects">
+                                <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
+                            </a>
                         </div>
 
                     <?php endforeach; ?>

@@ -119,12 +119,12 @@ $('.product__menu button').on('click', function(event) {
 /*--------------------------
   05. ScrollUp
 ---------------------------- */
-$.scrollUp({
-    scrollText: '<i class="zmdi zmdi-chevron-up"></i>',
-    easingType: 'linear',
-    scrollSpeed: 900,
-    animation: 'fade'
-});
+// $.scrollUp({
+//     scrollText: '<i class="zmdi zmdi-chevron-up"></i>',
+//     easingType: 'linear',
+//     scrollSpeed: 900,
+//     animation: 'fade'
+// });
 
 
 

@@ -146,11 +146,11 @@ CSS
 
 
 <!-- Start Our ShopSide Area -->
-<section class="htc__shop__sidebar bg__white ptb--120">
+<section class="htc__shop__sidebar bg__white ptb--70">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-3 order-lg-1 order-2 col-sm-12 border-end">
-                <div class="htc__shop__left__sidebar">
+            <div class="col-md-12 col-lg-3 order-lg-1 order-1 col-sm-12 border-end">
+                <div class="htc__shop__left__sidebar pb-5">
                     <div class="accordion" id="filterAccordion">
 
                         <!-- Category -->
@@ -227,7 +227,7 @@ CSS
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-9 order-lg-2 order-1 col-sm-12 col-xs-12 smt-30">
+            <div class="col-md-12 col-lg-9 order-lg-2 order-2 col-sm-12 col-xs-12 smt-30">
 
                 <div class="tab-contet shop__grid__view__wrap">
                     <div id="product-header" class="mb-4">
@@ -258,7 +258,7 @@ CSS
 
                                     <?php foreach ($child->products as $product): ?>
                                         <!-- Start Single Product -->
-                                        <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $child->parent ? $child->parent->slug : "" ?>">
+                                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $child->slug ?>" data-parentgroup="<?= $child->parent ? $child->parent->slug : "" ?>">
                                             <div class="product">
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
@@ -282,7 +282,7 @@ CSS
 
                             <?php foreach ($category->products as $product): ?>
                                 <!-- Start Single Product -->
-                                <div class="col-md-4 col-lg-4 col-sm-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category->slug ?>" data-parentgroup="<?= $category->parent ? $category->parent->slug : "" ?>">
+                                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 product-item mb-5 d-none" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category->slug ?>" data-parentgroup="<?= $category->parent ? $category->parent->slug : "" ?>">
                                     <div class="product">
                                         <div class="product__inner">
                                             <div class="pro__thumb">
