@@ -56,7 +56,7 @@ AppAsset::register($this);
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
-            <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header pr--60 pl--60">
+            <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
                 <div class="container-fluid">
 
                     <div class="row align-items-center">
