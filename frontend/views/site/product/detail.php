@@ -37,9 +37,6 @@ $this->registerCss(
                     <u><?= Html::encode($model->name) ?></u>
                 </h2>
 
-                <p class="fs-4 text-danger mb-3">
-                    <?= Yii::$app->formatter->asCurrency($model->price, 'IDR') ?>
-                </p>
 
                 <p class="mb-4 text-justify">
                     <?= $model->description ?? '' ?>
@@ -47,32 +44,6 @@ $this->registerCss(
 
             </div>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <h5 class="fw-bold mb-3 text-center">
-                    Tersedia di Toko Online Kesayangan Anda:
-                </h5>
-
-                <div class="d-flex gap-3 mb-4 justify-content-center">
-                    <?php foreach ($model->productShops as $productShop): ?>
-                        <?php if ($productShop->shop && $productShop->shop_link): ?>
-                            <a href="<?= Html::encode($productShop->shop_link) ?>"
-                                target="_blank"
-                                class="d-inline-block">
-                                <img src="<?= $productShop->shop->getButtonImageAltUrl() ?>"
-                                    alt="<?= Html::encode($productShop->shop->name) ?>"
-                                    style="height:50px;">
-                            </a>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-
-
-
-
 
     </div>
 
@@ -113,9 +84,6 @@ $this->registerCss(
                                         </a>
                                     </h2>
 
-                                    <p class="fs-4 text-danger mb-3">
-                                        <?= Yii::$app->formatter->asCurrency($product->price, 'IDR') ?>
-                                    </p>
 
                                     <p class="mb-4 text-justify">
                                         <?= mb_strimwidth($product->description ?? '', 0, 300, '...'); ?>

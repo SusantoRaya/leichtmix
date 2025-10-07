@@ -35,15 +35,8 @@ use yii\helpers\Html; ?>
                 <div class="row justify-content-center">
 
                     <?php foreach ($certificate_national as $cert): ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-sm border-0 h-100 text-center">
-                                <iframe src="<?= $cert->getFileUrl() ?>" class="w-100" style="height:500px;" frameborder="0"></iframe>
-                                <div class="card-body">
-                                    <a href="<?= $cert->getFileUrl() ?>" target="_blank" class="btn btn-outline-primary">
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
+                       <div class="col-md-4 mb-4">
+                            <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
                         </div>
 
                     <?php endforeach; ?>
@@ -57,14 +50,7 @@ use yii\helpers\Html; ?>
 
                     <?php foreach ($certificate_international as $cert): ?>
                         <div class="col-md-4 mb-4">
-                            <div class="card shadow-sm border-0 h-100 text-center">
-                                <iframe src="<?= $cert->getFileUrl() ?>" class="w-100" style="height:500px;" frameborder="0"></iframe>
-                                <div class="card-body">
-                                    <a href="<?= $cert->getFileUrl() ?>" target="_blank" class="btn btn-outline-primary">
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
+                            <img src="<?= $cert->getFileUrl() ?>" class="img-fluid" />
                         </div>
 
                     <?php endforeach; ?>

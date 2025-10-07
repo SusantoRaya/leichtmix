@@ -74,7 +74,7 @@ class Product extends ActiveRecord
     // {
     //     if (parent::beforeSave($insert)) {
     //         if (!empty($this->price)) {
-    //             // Remove commas and convert to integer
+    //             Remove commas and convert to integer
     //             $this->price = (int) str_replace(',', '', $this->price);
     //         }
     //         return true;
@@ -221,7 +221,7 @@ class Product extends ActiveRecord
             ->viaTable('product_related', ['product_id' => 'id']);
     }
 
-    public function getRelatedProductsFinal($limit = 4)
+    public function getRelatedProductsFinal($limit = 2)
     {
         $manual = $this->relatedProductsManual;
         if (!empty($manual)) {

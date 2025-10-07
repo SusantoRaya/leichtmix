@@ -68,6 +68,11 @@
   line-height: 90px;
 }
 
+.sticky__header.scroll-header .main__menu > li > a{
+  height: 50px;
+  line-height: 50px;
+}
+
 .main__menu>li{
   padding-top: 10px;
 }
