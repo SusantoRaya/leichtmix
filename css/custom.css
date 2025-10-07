@@ -73,9 +73,6 @@
   line-height: 50px;
 }
 
-.main__menu>li{
-  padding-top: 10px;
-}
 
 .main__menu li.drop ul.dropdown.mega_dropdown{
   width: 250px;
