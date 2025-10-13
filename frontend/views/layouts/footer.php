@@ -43,7 +43,7 @@ use yii\helpers\Html;
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="copyright__inner">
                         <div class="copyright">
-                            <p>© 2025 Leichtmix Electrical. All Rights Reserved.</p>
+                            <p>© 2025 Broco Aerated Concrete Industry. All Rights Reserved.</p>
                         </div>
                     </div>
                 </div>

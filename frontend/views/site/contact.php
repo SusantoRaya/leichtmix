@@ -3,7 +3,7 @@
 use yii\helpers\Html; ?>
 
 
-<section class="pt-5">
+<section class="pb-30">
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(<?= Yii::getAlias('@web') ?>/images/bg/hubungi-kami.png) no-repeat scroll center center / contain ; height:600px; padding: 80px 0;">
         <div class="ht__bradcaump__wrap">
@@ -18,7 +18,7 @@ use yii\helpers\Html; ?>
 
                         <!-- Subtitle -->
                         <p class="text-muted mb-5" style="font-size: 1.4rem; font-weight: 400; line-height: 1.6;">
-                            Tertarik dengan produk Mortar Broco? Silakan hubungi kami untuk informasi lebih lanjut.
+                            Tertarik dengan produk Mortar Leichtmix? Silakan hubungi kami untuk informasi lebih lanjut.
                         </p>
 
                         <!-- Contact Info -->
