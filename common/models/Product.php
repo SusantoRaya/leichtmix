@@ -237,6 +237,13 @@ class Product extends ActiveRecord
             ->all();
     }
 
+    public function getPreparations()
+    {
+        return $this->hasMany(ProductPreparation::class, ['product_id' => 'id'])
+            ->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+
 
 
     //  public function getImageUrl()

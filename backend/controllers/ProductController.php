@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\data\ActiveDataProvider;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -59,9 +60,15 @@ class ProductController extends Controller
     {
 
         $model = $this->findModel($id);
-        
+
+        $preparationDataProvider = new ActiveDataProvider([
+            'query' => $model->getPreparations(),
+            'pagination' => false,
+        ]);
+
         return $this->render('view', [
             'model' => $model,
+            'preparationDataProvider' => $preparationDataProvider,
         ]);
     }
 

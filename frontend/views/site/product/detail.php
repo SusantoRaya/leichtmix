@@ -10,6 +10,33 @@ $this->registerCss(
     .text-justify{
         text-align: justify;
     }
+
+    .preparation-section {
+    background-color: #fff;
+    }
+    .prep-step img {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .prep-caption {
+    max-width: 100%;
+    margin: 0 auto;
+    }
+    .step-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #bcbcbc;
+    line-height: 1;
+    }
+    .prep-step p {
+        font-size: 0.95rem;
+        color: #555;
+    }
+    @media (max-width: 768px) {
+        .step-number {
+            font-size: 1.5rem;
+        }
+    }
+
     CSS
 );
 
@@ -46,6 +73,49 @@ $this->registerCss(
         </div>
 
     </div>
+
+
+    <?php if (!empty($model->preparations)): ?>
+
+
+        <div class="container preparation-section my-5">
+
+            <hr style="border: 1px solid #000;">
+
+            <!-- Section Title -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="section-title-container text-center">
+                        <h1>PERSIAPAN</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <div class="row justify-content-center">
+                    <?php foreach ($model->preparations as $index => $prep): ?>
+                        <div class="col-md-4 mb-4">
+                            <div class="prep-step">
+                                <?php if ($prep->image): ?>
+                                    <img src="<?= $prep->getImageUrl() ?>"
+                                        class="card-img-top img-fluid"
+                                        alt="<?= Html::encode($prep->title) ?>">
+                                <?php endif; ?>
+                                <div class="prep-caption d-flex align-items-start justify-content-center">
+                                    <span class="step-number me-2"><?= $index + 1 ?></span>
+                                    <p class="mb-0 text-start">
+                                        <?= $prep->title ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 
 
     <div class="container related-products-section my-5">

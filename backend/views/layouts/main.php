@@ -40,7 +40,7 @@ $menuItems = [
     ['label' => '<i class="fa-solid fa-boxes-stacked me-2"></i> All Products', 'url' => ['/product/index']],
     ['label' => '<i class="fa-solid fa-layer-group me-2"></i> Categories', 'url' => ['/product-category/index']],
     ['label' => '<i class="fa-solid fa-store me-2"></i> Shops', 'url' => ['/shop/index']],
-    ['label' => '<i class="fa-regular fa-circle-question me-2"></i> FAQ', 'url' => ['/faq/index']],
+    // ['label' => '<i class="fa-regular fa-circle-question me-2"></i> FAQ', 'url' => ['/faq/index']],
     ['label' => '<i class="fa-brands fa-facebook me-2"></i> Sosmed', 'url' => ['/social-media/index']],
     ['label' => '<i class="fa-regular fa-address-card me-2"></i> About Us', 'url' => ['/about-us/index']],
     ['label' => '<i class="fa-solid fa-certificate me-2"></i> Certificate', 'url' => ['/certificate/index']],
