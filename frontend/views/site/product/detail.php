@@ -36,6 +36,9 @@ $this->registerCss(
             font-size: 1.5rem;
         }
     }
+    li{
+        list-style: inside;
+    }
 
     CSS
 );
