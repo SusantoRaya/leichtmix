@@ -15,7 +15,9 @@ class BannerController extends Controller
     {
         $searchModel = new BannerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $dataProvider->pagination = false;
+        $dataProvider->sort = false;
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -36,7 +38,7 @@ class BannerController extends Controller
 
         $disabledPages = \common\models\Banner::find()
             ->select('page')
-            ->where(['page' => ['homecat1', 'homecat2', 'homecat3', 'homecat4', 'homecat5','homecat6']])
+            ->where(['page' => ['homecat1', 'homecat2', 'homecat3', 'homecat4', 'homecat5', 'homecat6']])
             ->andWhere(['!=', 'id', $model->id ?? 0]) // ignore current record
             ->column();
 
@@ -92,5 +94,22 @@ class BannerController extends Controller
             return $model;
         }
         throw new NotFoundHttpException('The requested banner does not exist.');
+    }
+
+    public function actionReorder()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $order = Yii::$app->request->post('order', []);
+
+        if (!empty($order)) {
+            foreach ($order as $position => $id) {
+                Yii::$app->db->createCommand()
+                    ->update('product', ['sort_order' => $position + 1], ['id' => $id])
+                    ->execute();
+            }
+            return ['success' => true];
+        }
+
+        return ['success' => false];
     }
 }
