@@ -23,12 +23,13 @@ class BannerSearch extends Banner
 
     public function search($params)
     {
-        $query = Banner::find();
+        $query = Banner::find()->orderBy(['sort_order' => SORT_ASC]);;
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['sort_order' => SORT_ASC]],
-            'pagination' => ['pageSize' => 20],
+            'pagination' => false, // optional for drag/drop
+            'sort' => false,       // <- disables sorting completely (recommended)
         ]);
 
         $this->load($params);
@@ -45,6 +46,3 @@ class BannerSearch extends Banner
         return $dataProvider;
     }
 }
-
-
-?>

@@ -41,17 +41,11 @@ class ProjectController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => ProjectReference::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
+            'query' => ProjectReference::find()->orderBy(['sort_order'=>SORT_ASC]),
+            
+            'pagination' => false,
+            'sort' => false,
+            
         ]);
 
         return $this->render('index', [
@@ -140,5 +134,22 @@ class ProjectController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionReorder()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $order = Yii::$app->request->post('order', []);
+
+        if (!empty($order)) {
+            foreach ($order as $position => $id) {
+                Yii::$app->db->createCommand()
+                    ->update('project_reference', ['sort_order' => $position + 1], ['id' => $id])
+                    ->execute();
+            }
+            return ['success' => true];
+        }
+
+        return ['success' => false];
     }
 }

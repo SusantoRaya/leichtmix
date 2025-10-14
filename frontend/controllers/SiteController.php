@@ -138,7 +138,7 @@ class SiteController extends Controller
 
     public function actionProject()
     {
-        $projects = ProjectReference::find()->where(['status' => 1])->orderBy(['title' => SORT_ASC])->all();
+        $projects = ProjectReference::find()->where(['status' => 1])->orderBy(['sort_order' => SORT_ASC,'title' => SORT_ASC])->all();
         return $this->render('project', ['projects' => $projects]);
     }
 

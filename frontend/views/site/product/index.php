@@ -153,7 +153,11 @@ CSS
 
                                             <?php foreach ($category->products as $product): ?>
                                                 <?php $product_name = yii\helpers\Html::encode($product->name) ?>
-                                                <li class="list-group-item" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category_slug ?>" data-title="<?= $product_name ?>"><?= $product_name ?></li>
+                                                <li class="list-group-item" data-filter="<?= 'product-' . $product->id ?>" data-group="<?= $category_slug ?>" data-title="<?= $product_name ?>">
+                                                    <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>">
+                                                        <?= $product->name; ?>
+                                                    </a>
+                                                </li>
                                             <?php endforeach; ?>
 
                                         </ul>

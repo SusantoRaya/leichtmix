@@ -207,7 +207,11 @@ CSS
                                                         data-filter="<?= 'product-' . $product->id ?>"
                                                         data-group="<?= $category_slug ?>"
                                                         data-title="<?= $product_name ?>">
-                                                        <?= mb_strimwidth(Html::encode($product_name), 0, 200, '...'); ?>
+                                                        <a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>">
+
+                                                            <?= mb_strimwidth(Html::encode($product_name), 0, 200, '...'); ?>
+                                                        </a>
+
                                                     </li>
                                                 <?php endforeach; ?>
                                                 <?php if (empty($category->products)): ?>
@@ -269,7 +273,7 @@ CSS
                                                 </div>
                                                 <div class="product__details text-center">
                                                     <h2><a href="<?= Yii::$app->urlManager->createUrl(['product/detail', 'category_slug' => $product->category->slug, 'product_slug' => $product->slug]) ?>"><?= $product->name; ?></a></h2>
-                                                 
+
                                                 </div>
                                             </div>
                                         </div>

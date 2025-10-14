@@ -10,6 +10,9 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+
+     <?= $form->field($model, 'subtitle')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'fileUpload')->fileInput() ?>
 
     <?php if (!$model->isNewRecord && $model->file): ?>

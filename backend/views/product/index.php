@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
+            // 'id',
             [
                 'attribute' => 'category_id',
                 'value' => function ($model) {
@@ -39,7 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'slug',
-            'description:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->description;
+                },
+            ],
             [
                 'attribute' => 'price',
                 'value' => function ($model) {

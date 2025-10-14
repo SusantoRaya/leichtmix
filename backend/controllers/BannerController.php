@@ -15,8 +15,6 @@ class BannerController extends Controller
     {
         $searchModel = new BannerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination = false;
-        $dataProvider->sort = false;
         
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -104,7 +102,7 @@ class BannerController extends Controller
         if (!empty($order)) {
             foreach ($order as $position => $id) {
                 Yii::$app->db->createCommand()
-                    ->update('product', ['sort_order' => $position + 1], ['id' => $id])
+                    ->update('banner', ['sort_order' => $position + 1], ['id' => $id])
                     ->execute();
             }
             return ['success' => true];

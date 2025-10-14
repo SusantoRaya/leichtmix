@@ -27,9 +27,9 @@ class ProjectReference extends ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title','subtitle'], 'required'],
             [['status'], 'integer'],
-            [['title'], 'string', 'max' => 255],
+            [['title','subtitle'], 'string', 'max' => 255],
             [['file'], 'string', 'max' => 255],
             [['fileUpload'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf, jpg, jpeg, png'],
         ];

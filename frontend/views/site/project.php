@@ -53,8 +53,9 @@ $this->registerJs("
                             <div class="card border-0 shadow-sm">
                                 <img src="<?= $project->getFileUrl() ?>" class="card-img-top" alt="<?= $project->title ?>">
                                 <div class="card-img-overlay d-flex align-items-end justify-content-center p-0">
-                                    <div class="w-100 text-white py-2" style="background: rgba(0,0,0,0.6);">
-                                        <p class="fw-semibold mb-0"><?= $project->title ?></p>
+                                    <div class="w-100  py-2" style="background: rgba(0,0,0,0.6);">
+                                        <h2 class="fw-semibold mb-0 text-white"><?= $project->title ?></h2>
+                                        <p class="text-white"><?= $project->subtitle ?></p>
                                     </div>
                                 </div>
                             </div>

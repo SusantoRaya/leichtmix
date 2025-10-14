@@ -30,6 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel'  => $searchModel,
         'tableOptions' => ['class' => 'table table-bordered table-hover sortable-grid'],
+        'rowOptions' => function ($model) {
+            return ['data-id' => $model->id];
+        },
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
             [
