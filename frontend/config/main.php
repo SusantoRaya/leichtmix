@@ -55,6 +55,8 @@ return [
                 // ✅ Product category page
                 'product/<category_slug>' => 'product/index',
 
+                '/' => 'site/index',
+                'hubungi-kami' => 'site/contact-us',
                 'tentang-kami' => 'site/about-us',
                 'sertifikasi' => 'site/certificate',
                 'proyek-referensi' => 'site/project',

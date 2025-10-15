@@ -2,8 +2,11 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\bootstrap5\Breadcrumbs;
 
 /** @var $model app\models\Product */
+
+$this->title = $model->name ?? '' . ' - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
 
 $this->registerCss(
     <<<'CSS'
@@ -39,6 +42,9 @@ $this->registerCss(
     .container li{
         list-style: inside;
     }
+    .breadcrumb li{
+        list-style: none;
+    }
 
     CSS
 );
@@ -48,6 +54,9 @@ $this->registerCss(
 ?>
 <section class="htc__shop__sidebar bg__white pb--120">
     <div class="container my-5">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <h1 class="text-center">PRODUK</h1>
 
         <hr style="border: 1px solid #000;">

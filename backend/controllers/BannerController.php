@@ -28,7 +28,13 @@ class BannerController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            if ($model->upload() && $model->save(false)) {
+            $model->imageFile_t = UploadedFile::getInstance($model, 'imageFile_t');
+            $model->imageFile_m = UploadedFile::getInstance($model, 'imageFile_m');
+
+            $model->upload_t();
+            $model->upload_m();
+  
+            if ( $model->upload() && $model->save(false)) {
                 Yii::$app->session->setFlash('success', 'Banner created successfully');
                 return $this->redirect(['index']);
             }
@@ -52,6 +58,20 @@ class BannerController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $model->imageFile_t = UploadedFile::getInstance($model, 'imageFile_t');
+            $model->imageFile_m = UploadedFile::getInstance($model, 'imageFile_m');
+
+            if ($model->imageFile_t) {
+                $model->upload_t();
+            } else {
+                $model->image = $model->image_t; // keep old image
+            }
+
+            if ($model->imageFile_m) {
+                $model->upload_m();
+            } else {
+                $model->image = $model->image_m; // keep old image
+            }
 
             if ($model->imageFile) {
                 $model->upload();

@@ -101,6 +101,16 @@ class ProductController extends Controller
 
         $relatedProducts = $model->getRelatedProductsFinal();
 
+        // $this->view->params['breadcrumbs'][] = ['label' => 'Home', 'url' => ['/site/index']];
+        if ($model->category) {
+            $this->view->params['breadcrumbs'][] = [
+                'label' => $model->category->name,
+                'url' => ['/product/index', 'category_slug' => $model->category->slug],
+            ];
+        }
+        $this->view->params['breadcrumbs'][] = $model->name;
+
+
         return $this->render('/site/product/detail', [
             'model' => $model,
             'relatedProducts' => $relatedProducts,

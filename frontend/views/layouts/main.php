@@ -33,7 +33,7 @@ AppAsset::register($this);
     </script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Leichtmix Premium Mortar - Bersama Membangun Tanah Air</title>
+    <title><?= Html::encode($this->title) ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 
+$this->title = 'Product - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+
 $this->registerJs(
     <<<'JS'
 $(document).ready(function () {

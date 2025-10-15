@@ -78,9 +78,7 @@
     display: flex;
     justify-content: center;
 }
-.social__icon li {
-    padding: 0 20px;
-}
+
 .social__icon li:first-child {
     padding-left: 0;
 }

@@ -1,4 +1,5 @@
- <!-- Start Bradcaump area -->
+ <?php $this->title = 'Download Apps - Leichtmix Premium Mortar - Bersama Membangun Tanah Air'; ?>
+<!-- Start Bradcaump area -->
  <?php $banner = Yii::$app->banner->getByPage('download_apps'); ?>
  <?php if ($banner): ?>
      <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(<?= $banner->getImageUrl() ?>) no-repeat scroll center center / cover ;">

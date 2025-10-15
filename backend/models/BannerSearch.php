@@ -23,7 +23,7 @@ class BannerSearch extends Banner
 
     public function search($params)
     {
-        $query = Banner::find()->orderBy(['sort_order' => SORT_ASC]);;
+        $query = Banner::find()->orderBy(['sort_order' => SORT_ASC]);
 
 
         $dataProvider = new ActiveDataProvider([

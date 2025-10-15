@@ -8,6 +8,9 @@ use yii\web\UploadedFile;
 class Banner extends \yii\db\ActiveRecord
 {
     public $imageFile;
+    public $imageFile_t;
+    public $imageFile_m;
+    // ALTER TABLE `banner` ADD `image_t` VARCHAR(255) NULL DEFAULT NULL AFTER `image`, ADD `image_m` VARCHAR(255) NULL DEFAULT NULL AFTER `image_t`;
 
     const PAGES = [
         'home' => 'Home',
@@ -34,9 +37,9 @@ class Banner extends \yii\db\ActiveRecord
         return [
             [['title', 'page'], 'required'],
             [['status', 'sort_order'], 'integer'],
-            [['title', 'image', 'link'], 'string', 'max' => 255],
+            [['title', 'image', 'image_t', 'image_m', 'link'], 'string', 'max' => 255],
             [['page'], 'in', 'range' => array_keys(self::PAGES)],
-            [['imageFile'], 'file', 'extensions' => 'png, jpg, jpeg, webp', 'skipOnEmpty' => true],
+            [['imageFile', 'imageFile_t', 'imageFile_m'], 'file', 'extensions' => 'png, jpg, jpeg, webp', 'skipOnEmpty' => true],
             [['page'], 'validateUniqueHomeCategory'], // custom validator
         ];
     }
@@ -57,6 +60,33 @@ class Banner extends \yii\db\ActiveRecord
         }
     }
 
+    public function upload_t()
+    {
+        if ($this->imageFile_t) {
+            $fileName = uniqid() . '.' . $this->imageFile_t->extension;
+            $path = Yii::getAlias('@bannerPath') . '/' . $fileName;
+
+            if ($this->imageFile_t->saveAs($path)) {
+                $this->image_t = $fileName;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function upload_m()
+    {
+        if ($this->imageFile_m) {
+            $fileName = uniqid() . '.' . $this->imageFile_m->extension;
+            $path = Yii::getAlias('@bannerPath') . '/' . $fileName;
+
+            if ($this->imageFile_m->saveAs($path)) {
+                $this->image_m = $fileName;
+                return true;
+            }
+        }
+        return false;
+    }
     public function upload()
     {
         if ($this->imageFile) {
@@ -79,5 +109,18 @@ class Banner extends \yii\db\ActiveRecord
         return $base . '/uploads/banner/' . $this->image;
     }
 
-   
+    public function getImageUrl_t()
+    {
+        // Prefer configured frontend domain
+        $host = Yii::$app->params['frontendHostInfo'] ?? (Yii::$app->has('request') ? Yii::$app->request->getHostInfo() : '');
+        $base = $host ? rtrim($host, '/') : '';
+        return $base . '/uploads/banner/' . $this->image_t;
+    }
+    public function getImageUrl_m()
+    {
+        // Prefer configured frontend domain
+        $host = Yii::$app->params['frontendHostInfo'] ?? (Yii::$app->has('request') ? Yii::$app->request->getHostInfo() : '');
+        $base = $host ? rtrim($host, '/') : '';
+        return $base . '/uploads/banner/' . $this->image_m;
+    }
 }

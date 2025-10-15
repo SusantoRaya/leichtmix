@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+
+$this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
 ?>
 
 <!-- youtube video  -->
