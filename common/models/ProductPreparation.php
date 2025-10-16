@@ -44,7 +44,7 @@ class ProductPreparation extends ActiveRecord
     public function getImageUrl()
     {
         return $this->image
-            ? Yii::$app->params['frontendHostInfo'] . '/uploads/product/preparation' . $this->image
+            ? Yii::$app->params['frontendHostInfo'] . '/uploads/product/preparation/' . $this->image
             : Yii::$app->params['frontendHostInfo'] . '/uploads/product/no-image.png';
     }
 

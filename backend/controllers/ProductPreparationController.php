@@ -74,7 +74,7 @@ class ProductPreparationController extends Controller
         ]);
     }
 
-  public function actionCreate($product_id = null)
+    public function actionCreate($product_id = null)
     {
         $model = new ProductPreparation();
 
@@ -97,7 +97,7 @@ class ProductPreparationController extends Controller
                 $model->save();
             }
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['product/view', 'id' => $product_id]);
         }
 
         return $this->render('create', [
@@ -123,15 +123,15 @@ class ProductPreparationController extends Controller
             }
 
             $model->save(false);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['product/view', 'id' => $model->product_id]);
         }
-        
+
         // Fetch all products for the dropdown list
         $products = ArrayHelper::map(Product::find()->all(), 'id', 'name');
 
         return $this->render('update', [
             'model' => $model,
-             'products' => $products
+            'products' => $products
         ]);
     }
 
@@ -163,4 +163,22 @@ class ProductPreparationController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionReorder()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $order = Yii::$app->request->post('order', []);
+
+        if (!empty($order)) {
+            foreach ($order as $position => $id) {
+                Yii::$app->db->createCommand()
+                    ->update('product_preparation', ['sort_order' => $position + 1], ['id' => $id])
+                    ->execute();
+            }
+            return ['success' => true];
+        }
+
+        return ['success' => false];
+    }
+
 }

@@ -106,7 +106,7 @@ $this->registerCss(
             <div class="mt-5">
                 <div class="row justify-content-center">
                     <?php foreach ($model->preparations as $index => $prep): ?>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-2 mb-4">
                             <div class="prep-step">
                                 <?php if ($prep->image): ?>
                                     <img src="<?= $prep->getImageUrl() ?>"
