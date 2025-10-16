@@ -65,7 +65,7 @@ $this->registerCss(
                 </div>
                 <div class="col-12 col-md-6 text-white text-center text-md-end">
                     <div class="ptb--10 ">
-                        <img height="20px;" src="<?= Yii::getAlias('@web') ?>/images/logo/leichtmix.png" alt="logo" class="img-responsive">
+                        <img height="20px;" src="<?= Yii::getAlias('@web') ?>/images/favicon.ico" alt="logo" class="img-responsive">
                     </div>
                 </div>
             </div>

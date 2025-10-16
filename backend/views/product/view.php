@@ -46,7 +46,13 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.m
                 'attribute' => 'price',
                 'value' => Yii::$app->formatter->asCurrency($model->price, 'IDR'),
             ],
-            'description:ntext',   // <--- added here
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->description;
+                }
+            ],
             [
                 'attribute' => 'category_id',
                 'value' => $model->category ? $model->category->name : '-',
