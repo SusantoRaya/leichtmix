@@ -7,6 +7,7 @@ use yii\bootstrap5\Breadcrumbs;
 /** @var $model app\models\Product */
 
 $this->title = $model->name ?? '' . ' - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+$this->registerMetaTag(['name' => 'description', 'content' => 'asdsad']);
 
 $this->registerCss(
     <<<'CSS'
@@ -106,24 +107,21 @@ $this->registerCss(
             <div class="mt-5">
                 <div class="row justify-content-center">
                     <?php foreach ($model->preparations as $index => $prep): ?>
-                        <div class="col-md-2 mb-4">
-                            <div class="prep-step">
+                        <div class="col-12 col-sm-6 col-md-4 mb-4">
+                            <div class="prep-step text-center">
                                 <?php if ($prep->image): ?>
                                     <img src="<?= $prep->getImageUrl() ?>"
-                                        class="card-img-top img-fluid"
+                                        class="card-img-top img-fluid rounded shadow-sm"
                                         alt="<?= Html::encode($prep->title) ?>">
                                 <?php endif; ?>
-                                <div class="prep-caption d-flex align-items-start justify-content-center">
-                                    <span class="step-number me-2"><?= $index + 1 ?></span>
-                                    <p class="mb-0 text-start">
-                                        <?= $prep->title ?>
-                                    </p>
+                                <div class="prep-caption d-flex align-items-start justify-content-center mt-2">
+                                    <span class="step-number me-2 fw-bold"><?= $index + 1 ?></span>
+                                    <p class="mb-0 text-start small"><?= $prep->title ?></p>
                                 </div>
                             </div>
                         </div>
-
-
                     <?php endforeach; ?>
+
                 </div>
             </div>
         </div>
