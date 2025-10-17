@@ -32,6 +32,9 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.
 ]);
 
 $this->registerJs("
+
+    let scrollY = 0;
+
     const lightbox = GLightbox({
         touchNavigation: true,
         loop: true,
