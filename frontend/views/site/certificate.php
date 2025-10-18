@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 
 $this->title = 'Sertifikasi - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+$this->registerMetaTag(['name' => 'description', 'content' => '']);
+
 
 // ✅ Register JS + CSS for GLightbox
 $this->registerCssFile('https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css', [

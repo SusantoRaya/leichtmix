@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 
 $this->title = 'Product - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+$this->registerMetaTag(['name' => 'description', 'content' =>'' ]);
 
 $this->registerJs(
     <<<'JS'

@@ -20,6 +20,11 @@ $this->registerCss("
         font-size: 1rem;
     }
 
+    // body.glightbox-open {
+    //     position: static !important;
+    //     overflow: auto !important;
+    // }
+
 ");
 
 // ✅ Register JS + CSS for GLightbox
@@ -31,23 +36,20 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.
     'depends' => [\yii\web\JqueryAsset::class],
 ]);
 
-$this->registerJs("
-
-    let scrollY = 0;
-
+$this->registerJs(
+    <<< JS
+   
     const lightbox = GLightbox({
+        disableScrolling: true,
         touchNavigation: true,
         loop: true,
         openEffect: 'fade',
         closeEffect: 'fade',
-        beforeOpen: () => {
-            scrollY = window.scrollY;
-        },
-        afterClose: () => {
-            window.scrollTo(0, scrollY);
-        }
     });
-");
+
+    
+    JS
+);
 ?>
 
 <!-- Start Our Store Area -->
@@ -58,6 +60,7 @@ $this->registerJs("
         <h1 class="title__line">REFERENSI PROYEK</h1>
         <hr class="mb-5" style="width: 90%; max-width: 1200px; border-top: 1px solid #000;">
 
+        <a class="lightbox-close" href="javascript:;"></a>
         <div class="row g-4 justify-content-center">
             <!-- Project 1 -->
             <?php if ($projects): ?>

@@ -1,4 +1,6 @@
 <?php
+
+
 $this->registerJs(
     <<<'JS'
     $( document ).ready(function() {

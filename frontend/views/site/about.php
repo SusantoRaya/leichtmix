@@ -1,4 +1,9 @@
- <?php $this->title = 'Tentang Kami - Leichtmix Premium Mortar - Bersama Membangun Tanah Air'; ?>
+ <?php 
+ 
+ $this->title = 'Tentang Kami - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+ $desciption = mb_strimwidth($about->content ?? '', 0, 155);
+$this->registerMetaTag(['name' => 'description', 'content' => $desciption]);
+ ?>
  <!-- Start Bradcaump area -->
  <?php $banner = Yii::$app->banner->getByPage('aboutus'); ?>
  <?php if ($banner): ?>

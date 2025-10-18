@@ -7,7 +7,8 @@ use yii\bootstrap5\Breadcrumbs;
 /** @var $model app\models\Product */
 
 $this->title = $model->name ?? '' . ' - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
-$this->registerMetaTag(['name' => 'description', 'content' => 'asdsad']);
+$desciption = mb_strimwidth($model->description ?? '', 0, 155);
+$this->registerMetaTag(['name' => 'description', 'content' => $desciption]);
 
 $this->registerCss(
     <<<'CSS'

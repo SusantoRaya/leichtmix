@@ -21,9 +21,9 @@ $this->registerCss(
                 <div class="col-12 col-md-4 text-center text-md-start mb-1 order-1">
                     <ul>
                         <li><span class="fw-semibold">Tim Project Broco Aerated:</span></li>
-                        <li>Telp: 021-3847089</li>
-                        <li>WA: 0851-0038-5015</li>
-                        <li>Email: marketingbroco@gmail.com</li>
+                        <li>Telp: <a href="tel:+62213847089">021-3847089</a></li>
+                        <li>WA: <a href="https://wa.me/6285100385015?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0851-0038-5015<a></li>
+                        <li>Email: <a href="mailto:marketingbroco@gmail.com">marketingbroco@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 text-center mb-1 order-3 order-md-2">
@@ -47,9 +47,9 @@ $this->registerCss(
                 <div class="col-12 col-md-4 text-center text-md-end mb-1 order-2 order-md-3">
                     <ul>
                         <li><span class="fw-semibold">Tim Retail Broco Aerated :</span></li>
-                        <li>Telp: 021-21201167</li>
-                        <li>WA: 0819-0880-8868</li>
-                        <li>Email: sales.retail@broco.net</li>
+                        <li>Telp: <a href="tel:+622121201167">021-21201167</li>
+                        <li>WA: <a href="https://wa.me/6281908808868?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0819-0880-8868</a></li>
+                        <li>Email: <a href="mailto:sales.retail@broco.net">sales.retail@broco.net</a></li>
                     </ul>
                 </div>
             </div>

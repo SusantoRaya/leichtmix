@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 $this->title = 'Hubungi Kami - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
-
+$this->registerMetaTag(['name' => 'description', 'content' => 'Tertarik dengan produk Mortar Leichtmix? Silakan hubungi kami untuk informasi lebih lanjut.']);
 ?>
 
 
@@ -34,34 +34,18 @@ $this->title = 'Hubungi Kami - Leichtmix Premium Mortar - Bersama Membangun Tana
                             <div class="col-lg-6 col-md-6 col-xs-12">
                                 <ul class="list-unstyled" style="font-size: 1.3rem; line-height: 1.8;">
                                     <li><span class="fw-semibold">Tim Project Broco Aerated:</span></li>
-                                    <li>
-                                        <a href="tel:+62213847089" class="text-decoration-none text-dark fw-medium">
-                                            Telp: 021-3847089
-                                        </a>
-                                    </li>
-                                    <li>WA: 0851-0038-5015</li>
-                                    <li>
-                                        <a href="mailto:marketingbroco@gmail.com" class="text-decoration-none text-dark fw-medium">
-                                            Email: marketingbroco@gmail.com
-                                        </a>
-                                    </li>
+                                    <li>Telp: <a href="tel:+62213847089">021-3847089</a></li>
+                                    <li>WA: <a href="https://wa.me/6285100385015?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0851-0038-5015<a></li>
+                                    <li>Email: <a href="mailto:marketingbroco@gmail.com">marketingbroco@gmail.com</a></li>
 
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-md-6 col-xs-12">
                                 <ul class="list-unstyled" style="font-size: 1.3rem; line-height: 1.8;">
                                     <li><span class="fw-semibold">Tim Retail Broco Aerated :</span></li>
-                                    <li>
-                                        <a href="tel:+622121201167" class="text-decoration-none text-dark fw-medium">
-                                            Telp: 021-21201167
-                                        </a>
-                                    </li>
-                                    <li>WA: 0819-0880-8868</li>
-                                    <li>
-                                        <a href="mailto:sales.retail@broco.net" class="text-decoration-none text-dark fw-medium">
-                                            Email: sales.retail@broco.net
-                                        </a>
-                                    </li>
+                                    <li>Telp: <a href="tel:+622121201167">021-21201167</li>
+                                    <li>WA: <a href="https://wa.me/6281908808868?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0819-0880-8868</a></li>
+                                    <li>Email: <a href="mailto:sales.retail@broco.net">sales.retail@broco.net</a></li>
 
                                 </ul>
                             </div>

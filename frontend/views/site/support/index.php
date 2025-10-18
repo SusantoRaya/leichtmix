@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'Support - Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
+$this->registerMetaTag(['name' => 'description', 'content' => '']);
+
 $this->registerJs(
     <<<'JS'
 

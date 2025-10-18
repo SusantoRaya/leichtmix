@@ -33,33 +33,16 @@ AppAsset::register($this);
     </script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= Html::encode($this->title) ?></title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= Yii::getAlias('@web'). '/images/favicon.ico' ?>">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <title><?= Html::encode($this->title) ?></title>
 
-    <!-- Bootstrap Fremwork Main Css -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    <!-- All Plugins css -->
-    <!-- <link rel="stylesheet" href="css/plugins.css"> -->
-    <!-- Theme shortcodes/elements style -->
-    <!-- <link rel="stylesheet" href="css/shortcode/shortcodes.css"> -->
-    <!-- Theme main style -->
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <!-- Responsive css -->
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-    <!-- User style -->
-    <!-- <link rel="stylesheet" href="css/custom.css"> -->
-
-    <!-- Modernizr JS -->
-    <!-- <script src="js/vendor/modernizr-3.11.2.min.js"></script> -->
     <?php $this->head() ?>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column">
     <?php $this->beginBody() ?>
 
     <!-- Body main wrapper start -->
@@ -206,7 +189,7 @@ AppAsset::register($this);
         </div>
     </div>
     <!-- Body main wrapper end -->
-    <a href="https://wa.me/6281908808868" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/6281908808868?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     <?php $this->endBody() ?>
