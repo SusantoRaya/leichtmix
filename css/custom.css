@@ -20,7 +20,8 @@
 }
 
 .video-container {
-  height: 750px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {

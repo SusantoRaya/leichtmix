@@ -17,7 +17,7 @@ $this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
                 <div class="video-container">
 
                     <iframe class="video-background"
-                        src="https://www.youtube.com/embed/1nRBH_SHu8o?autoplay=1&controls=1&loop=1&playlist=1nRBH_SHu8o&modestbranding=1&showinfo=0"
+                        src="https://www.youtube.com/embed/1nRBH_SHu8o?autoplay=1&controls=1&loop=1&playlist=1nRBH_SHu8o"
                         frameborder="0"
                         allow="autoplay; encrypted-media"
                         allowfullscreen>
