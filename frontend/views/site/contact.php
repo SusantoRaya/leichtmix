@@ -25,11 +25,6 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Tertarik dengan p
                             Tertarik dengan produk Mortar Leichtmix? Silakan hubungi kami untuk informasi lebih lanjut.
                         </p>
 
-                        <!-- Contact Info -->
-                        <h2 class="fw-bold mb-2 text-dark" style="font-size: 2.2rem;">INDONESIA</h2>
-                        <p class="fw-semibold mb-1" style="font-size: 1.5rem;">PASAR DOMESTIK</p>
-                        <p class="fw-semibold mb-4" style="font-size: 1.5rem;">BROCO INDUSTRIES</p>
-
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-xs-12">
                                 <ul class="list-unstyled" style="font-size: 1.3rem; line-height: 1.8;">
