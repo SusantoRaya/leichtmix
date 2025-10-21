@@ -825,6 +825,10 @@
     padding-top: 20px;
   }
 
+  .xmt-10 {
+    margin-top: 10px;
+  }
+
   .xmt-30 {
     margin-top: 30px;
   }
@@ -960,8 +964,8 @@
 
   .wrap__box__style--1 {
     padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .slider--four .slider__fixed--height {
