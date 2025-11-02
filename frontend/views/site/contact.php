@@ -9,9 +9,9 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Tertarik dengan p
 
 <section class="pb-30">
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(<?= Yii::getAlias('@web') ?>/images/bg/hubungi-kami.png) no-repeat scroll center center / contain ; height:600px; padding: 180px 0;">
-        <div class="ht__bradcaump__wrap">
-            <div class="container">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(<?= Yii::getAlias('@web') ?>/images/bg/hubungi-kami.png) no-repeat scroll center center / contain ; height:600px;">
+        <div class="mt--30">
+            <div class="container cus">
                 <div class="row justify-content-start">
                     <div class="col-lg-12 col-md-12">
                         <!-- Title -->
