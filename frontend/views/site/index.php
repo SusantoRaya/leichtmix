@@ -44,8 +44,16 @@ $this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
                     <a href="#"><img src="<?= $banner->getImageUrl() ?>" alt="<?= $banner->title ?>"></a>
                 </div>
                 <div class="content">
-                    <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                    <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
+                    <span class="d-block d-flex flex-rows align-items-center justify-content-between w-100 text-white px-3 px-lg-4 homecat">
+                        <span>
+                            <h6 class="m-0 text-white"><?= $banner->title ?></h6>
+                        </span>
+                        <span>
+                            <a href="<?= $banner->link ?>" class="btn btn-succes rounded-pill text-white border-3 border-white align-items-center px-3"><i class="fas fa-circle fs-sm mr-3">
+                                </i><span class="fs-small ms-2">Pelajari Lebih Lanjut</span>
+                            </a>
+                        </span>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>
@@ -59,8 +67,16 @@ $this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
                     <a href="#"><img src="<?= $banner->getImageUrl() ?>" alt="<?= $banner->title ?>"></a>
                 </div>
                 <div class="content">
-                    <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                    <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
+                    <span class="d-block d-flex flex-rows align-items-center justify-content-between w-100 text-white px-3 px-lg-4 homecat">
+                        <span>
+                            <h6 class="m-0 text-white"><?= $banner->title ?></h6>
+                        </span>
+                        <span>
+                            <a href="<?= $banner->link ?>" class="btn btn-succes rounded-pill text-white border-3 border-white align-items-center px-3"><i class="fas fa-circle fs-sm mr-3">
+                                </i><span class="fs-small ms-2">Pelajari Lebih Lanjut</span>
+                            </a>
+                        </span>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>
@@ -77,8 +93,16 @@ $this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
                     <a href="#"><img src="<?= $banner->getImageUrl() ?>" alt="<?= $banner->title ?>"></a>
                 </div>
                 <div class="content">
-                    <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                    <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
+                    <span class="d-block d-flex flex-rows align-items-center justify-content-between w-100 text-white px-3 px-lg-4 homecat">
+                        <span>
+                            <h6 class="m-0 text-white"><?= $banner->title ?></h6>
+                        </span>
+                        <span>
+                            <a href="<?= $banner->link ?>" class="btn btn-succes rounded-pill text-white border-3 border-white align-items-center px-3"><i class="fas fa-circle fs-sm mr-3">
+                                </i><span class="fs-small ms-2">Pelajari Lebih Lanjut</span>
+                            </a>
+                        </span>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>
@@ -93,8 +117,16 @@ $this->title = 'Leichtmix Premium Mortar - Bersama Membangun Tanah Air';
                     <a href="#"><img src="<?= $banner->getImageUrl() ?>" alt="<?= $banner->title ?>"></a>
                 </div>
                 <div class="content">
-                    <h6 class="text-uppercase"><?= $banner->title ?></h6>
-                    <a class="htc__btn shop__now__btn btn btn-outline-light" href="<?= $banner->link ?>">Pelajari Lebih Lanjut</a>
+                    <span class="d-block d-flex flex-rows align-items-center justify-content-between w-100 text-white px-3 px-lg-4 homecat">
+                        <span>
+                            <h6 class="m-0 text-white"><?= $banner->title ?></h6>
+                        </span>
+                        <span>
+                            <a href="<?= $banner->link ?>" class="btn btn-succes rounded-pill text-white border-3 border-white align-items-center px-3"><i class="fas fa-circle fs-sm mr-3">
+                                </i><span class="fs-small ms-2">Pelajari Lebih Lanjut</span>
+                            </a>
+                        </span>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>

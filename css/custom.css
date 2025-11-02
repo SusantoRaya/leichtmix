@@ -41,7 +41,17 @@
   .video-container {
     height: auto;
   }
+
+  .homecat {
+    flex-direction: column;
+    align-items: flex-start;
+    /* or center, if you prefer */
+    height: 75px;
+  }
+
+  
 }
+
 .banner.style--2 .content {
   top: 85%;
   width: 100%;
@@ -158,7 +168,8 @@
 
 .social__icon li a i {
   color: #008b2d;
-  font-size: 25px;;
+  font-size: 25px;
+  ;
 }
 
 .brochure-btn a {
