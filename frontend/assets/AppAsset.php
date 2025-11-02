@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
         'css/shortcode/shortcodes.css?v=1',
         'css/style.css?v=1',
         'css/responsive.css?v=1',
-        'css/custom.css?v=1'
+        'css/custom.css?v=2'
 
     ];
     public $js = [

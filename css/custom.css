@@ -49,7 +49,11 @@
     height: 75px;
   }
 
-  
+  .uniq__banner__area {
+    --bs-gutter-y: 0;
+    --bs-gutter-x: 0;
+  }
+
 }
 
 .banner.style--2 .content {
