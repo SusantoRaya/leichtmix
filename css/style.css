@@ -3929,6 +3929,7 @@ a.shipping-calculator-button:hover{
     max-width: 100%;
     overflow: hidden;
     position: relative;
+    pointer-events: none;
 }
 
 
