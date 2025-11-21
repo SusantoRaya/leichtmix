@@ -170,7 +170,7 @@ CSS
 
 
                                 <h2 class="accordion-header" id="<?= 'headingCategory-' . $i ?>">
-                                    <a href="<?= yii\helpers\Url::to(['product/index', 'category_slug' => $category->slug]) ?>">
+                                    <a href="#">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="<?= '#collapseCategory-' . $i ?>" aria-expanded="false" aria-controls="<?= 'collapseCategory-' . $i ?>">
                                             <?= $category_name ?>
                                         </button>
