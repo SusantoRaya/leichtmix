@@ -46,7 +46,7 @@ $this->registerCss(
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-end mb-1 order-2 order-md-3">
                     <ul>
-                        <li><span class="fw-semibold">Dvisi Retail Broco Aerated :</span></li>
+                        <li><span class="fw-semibold">Divisi Retail Broco Aerated :</span></li>
                         <li>Telp: <a href="tel:+622121201167">021-21201167</li>
                         <li>WA: <a href="https://wa.me/6281908808868?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0819-0880-8868</a></li>
                         <li>Email: <a href="mailto:sales.retail@broco.net">sales.retail@broco.net</a></li>

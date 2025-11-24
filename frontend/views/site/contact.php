@@ -37,7 +37,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Tertarik dengan p
                             </div>
                             <div class="col-lg-6 col-md-6 col-xs-12">
                                 <ul class="list-unstyled" style="font-size: 1.3rem; line-height: 1.8;">
-                                    <li><span class="fw-semibold">Dvisi Retail Broco Aerated :</span></li>
+                                    <li><span class="fw-semibold">Divisi Retail Broco Aerated :</span></li>
                                     <li>Telp: <a href="tel:+622121201167">021-21201167</li>
                                     <li>WA: <a href="https://wa.me/6281908808868?text=Halo saya tertarik dengan produk LeichtMix ..." target="_blank" aria-label="Chat on WhatsApp">0819-0880-8868</a></li>
                                     <li>Email: <a href="mailto:sales.retail@broco.net">sales.retail@broco.net</a></li>
